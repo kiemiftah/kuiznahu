@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>اختبار القواعد العربية</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700&family=Amiri+Quran&family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -11,7 +12,6 @@
       --navy-dark: #0f172a;
       --navy-deep: #1e3a8a;
       --navy-medium: #1e293b;
-      --navy-light: #cbd5e1;
       --primary-blue: #2563eb;
       --accent-blue: #3b82f6;
       --navy-gradient: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
@@ -34,7 +34,7 @@
 
     .container {
       width: 100%;
-      max-width: 850px;
+      max-width: 850px; 
       padding: 20px;
       box-sizing: border-box;
       display: flex;
@@ -58,11 +58,11 @@
       justify-content: center;
       margin-bottom: 25px;
     }
-
+    
     .app-logo {
       width: 150px;
       height: 150px;
-      border-radius: 50%;
+      border-radius: 50%; 
       object-fit: cover;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
       background: #fff;
@@ -127,17 +127,17 @@
       font-family: 'Arimo', sans-serif;
       direction: ltr;
       text-align: center;
-      font-size: 1.1rem;
+      font-size: 1.5rem; 
       font-weight: 700;
       color: var(--navy-darkest);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .arabic-text {
       font-family: 'Amiri Quran', serif;
-      font-size: 2.1rem;
+      font-size: 2.2rem; 
       direction: rtl;
-      line-height: 2.6;
+      line-height: 2.8; 
       text-align: center;
       color: var(--navy-darkest);
       width: 100%;
@@ -146,7 +146,7 @@
 
     #options-container {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr; 
       gap: 20px;
       width: 100%;
     }
@@ -164,16 +164,16 @@
       width: 100%;
     }
 
-    label {
-      display: block;
-      margin-bottom: 15px;
-      font-weight: 800;
-      font-size: 0.9rem;
-      color: var(--navy-medium);
+    label { 
+      display: block; 
+      margin-bottom: 15px; 
+      font-weight: 800; 
+      font-size: 0.9rem; 
+      color: var(--navy-light);
       text-align: center;
       letter-spacing: 1px;
     }
-
+    
     input[type="text"] {
       width: 100%;
       max-width: 450px;
@@ -203,7 +203,7 @@
       border-radius: 20px;
       font-weight: 900;
       cursor: pointer;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       margin: 10px auto;
       text-transform: uppercase;
@@ -212,21 +212,15 @@
 
     .btn:active { transform: scale(0.96); }
 
-    .btn-primary {
+    .btn-primary { 
       background: var(--navy-gradient);
-      color: white;
+      color: white; 
       box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.4);
     }
-
+    
     .btn-primary:hover {
       box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.5);
       opacity: 0.95;
-    }
-
-    .btn-success {
-      background: var(--success);
-      color: white;
-      box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
     }
 
     .option-card {
@@ -240,32 +234,30 @@
       background: #fff;
       transition: all 0.25s ease;
       box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-      min-height: 120px;
+      min-height: 120px; 
     }
 
-    .option-card:hover {
-      border-color: var(--accent-blue);
+    .option-card:hover { 
+      border-color: var(--accent-blue); 
       background: #f8fbff;
       transform: translateY(-3px);
     }
 
-    .option-card.selected {
-      border-color: var(--primary-blue);
-      background: #eff6ff;
+    .option-card.selected { 
+      border-color: var(--primary-blue); 
+      background: #eff6ff; 
       box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.2);
     }
 
-    .nav-buttons {
-      display: flex;
-      gap: 15px;
-      margin-top: 45px;
+    .nav-buttons { 
+      display: flex; 
+      gap: 15px; 
+      margin-top: 45px; 
       width: 100%;
       justify-content: center;
-      flex-wrap: wrap;
     }
-
-    .nav-buttons button {
-      flex: 1;
+    .nav-buttons button { 
+      flex: 1; 
       max-width: 250px;
     }
 
@@ -278,23 +270,14 @@
       border: 1px solid #e2e8f0;
       width: 100%;
     }
-
-    .progress-fill {
-      height: 100%;
-      background: var(--primary-blue);
-      transition: width 0.6s ease-in-out;
-    }
+    .progress-fill { height: 100%; background: var(--primary-blue); transition: width 0.6s ease-in-out; }
 
     .hidden { display: none !important; }
-
+    
     .loading-overlay {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(2, 6, 23, 0.97);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
       z-index: 9999;
       color: white;
       text-align: center;
@@ -302,101 +285,61 @@
     }
 
     .leaderboard-table {
-      width: 100%;
-      border-collapse: collapse;
+      width: 100%; border-collapse: collapse;
       margin-top: 10px;
     }
-
-    .leaderboard-table th {
-      padding: 15px;
-      text-align: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      border-bottom: 2px solid #f1f5f9;
-    }
-
-    .leaderboard-table td {
-      padding: 20px 15px;
-      border-bottom: 1px solid #f1f5f9;
-      text-align: center;
-      font-weight: 600;
-    }
-
-    .info-box {
-      margin-top: 20px;
-      padding: 16px;
-      border-radius: 18px;
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      color: var(--navy-medium);
-      font-weight: 700;
-    }
-
-    .error-box {
-      color: var(--error);
-      margin-top: 25px;
-      font-size: 0.95rem;
-      text-align: center;
-      font-weight: 800;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    .leaderboard-table th { padding: 15px; text-align: center; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; border-bottom: 2px solid #f1f5f9; }
+    .leaderboard-table td { padding: 20px 15px; border-bottom: 1px solid #f1f5f9; text-align: center; font-weight: 600; }
+    
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
     @media (max-width: 480px) {
       .card { padding: 35px 20px; }
       .app-title { font-size: 2.2rem; }
       .arabic-text { font-size: 1.8rem; }
-      .roman-text { font-size: 1rem; }
+      .roman-text { font-size: 1.25rem; }
       .app-logo { width: 120px; height: 120px; }
-      .nav-buttons button { max-width: 100%; }
     }
   </style>
 </head>
 <body>
 
 <div class="container">
+  <!-- Loading State -->
   <div id="loading" class="loading-overlay hidden">
     <div style="border: 6px solid rgba(255,255,255,0.1); border-top: 6px solid white; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite;"></div>
     <p id="loading-text" style="margin-top: 25px; font-weight: 800; font-family: 'Cairo'; letter-spacing: 2px; font-size: 1.1rem;">SILA TUNGGU...</p>
   </div>
 
+  <!-- Screen 1: Login -->
   <div id="screen-login" class="card">
     <div class="logo-container">
       <img src="https://img2link.kiemiftah.com/uploads/kuizapplogo.png" alt="Logo Kuiz" class="app-logo" onerror="this.src='https://placehold.co/512x512/0f172a/ffffff?text=NAHU';">
     </div>
-
     <div class="app-title">اختبار القواعد العربية</div>
-
     <div class="instruction-box">
-      <div class="instruction-ar">أجب عن جميع الأسئلة. يُسمح بثلاث محاولات كحد أقصى. الترتيب يعتمد على أعلى درجة.</div>
-      <div class="instruction-ms">Sila jawab semua soalan. Maksimum tiga cubaan keseluruhan. Ranking dikira berdasarkan skor tertinggi.</div>
+      <div class="instruction-ar">أجب عن جميع الأسئلة. يُسمح بثلاث محاولات كحد أقصى. الترتيب يعتمد pada markah cubaan terbaik anda.</div>
+      <div class="instruction-ms">Sila jawab semua soalan. Maksimum tiga cubaan sahaja. Ranking dikira mengikut markah cubaan terbaik anda.</div>
     </div>
-
     <div class="login-form">
       <label>SILA MASUKKAN NOMBOR MATRIK PELAJAR</label>
-      <input type="text" id="matric-input" placeholder="A12345" autocomplete="off" oninput="this.value = this.value.toUpperCase().trimStart()">
+      <input type="text" id="matric-input" placeholder="A12345" autocomplete="off" 
+             oninput="this.value = this.value.toUpperCase()"
+             onkeydown="if(event.key === 'Enter') handleLogin()">
       <button class="btn btn-primary" onclick="handleLogin()">MULAKAN KUIZ SEKARANG</button>
     </div>
-
-    <div id="login-info" class="info-box hidden"></div>
-    <div id="login-error" class="error-box hidden"></div>
+    <div id="login-error" style="color: var(--error); margin-top: 25px; font-size: 0.9rem; text-align: center; font-weight: 800;" class="hidden"></div>
   </div>
 
+  <!-- Screen 2: Quiz -->
   <div id="screen-quiz" class="hidden">
     <div class="card">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%; gap: 10px; flex-wrap: wrap;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%;">
         <span id="quiz-progress-text" style="font-weight: 800; font-size: 0.95rem; color: var(--navy-deep);">SOALAN 1 / 100</span>
-        <span id="quiz-attempt-info" style="font-size: 0.75rem; font-weight: 900; background: #eff6ff; color: #1e40af; padding: 8px 16px; border-radius: 12px; border: 1px solid #dbeafe;">CUBAAN 1 / 3</span>
+        <span id="quiz-attempt-info" style="font-size: 0.75rem; font-weight: 900; background: #eff6ff; color: #1e40af; padding: 8px 16px; border-radius: 12px; border: 1px solid #dbeafe;">CUBAAN 1/3</span>
       </div>
-
-      <div class="progress-bar">
-        <div id="progress-fill" class="progress-fill" style="width: 1%"></div>
-      </div>
-
+      <div class="progress-bar"><div id="progress-fill" class="progress-fill" style="width: 1%"></div></div>
+      
       <div id="question-container">
         <div class="question-box">
           <div class="roman-text" id="q-text">Memuatkan...</div>
@@ -408,24 +351,24 @@
         <button class="btn" style="background: #f1f5f9; color: #334155; border: 1px solid #e2e8f0; font-weight: 700;" id="btn-prev" onclick="prevQuestion()" disabled>KEMBALI</button>
         <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">SETERUSNYA</button>
       </div>
-
-      <button class="btn btn-success hidden" id="btn-submit" style="margin-top: 20px; max-width: 100%;" onclick="confirmSubmit()">HANTAR JAWAPAN SEKARANG</button>
+      <button class="btn hidden" id="btn-submit" style="background: var(--success); color: white; margin-top: 20px; max-width: 100%; box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);" onclick="confirmSubmit()">HANTAR JAWAPAN SEKARANG</button>
     </div>
   </div>
 
+  <!-- Screen 3: Result -->
   <div id="screen-result" class="hidden">
     <div class="card" style="text-align: center;">
       <h1 style="font-family: 'Cairo'; font-size: 2.5rem; color: var(--navy-dark); font-weight: 900;" id="result-status">Keputusan</h1>
       <div style="font-size: 5.5rem; font-weight: 900; margin: 15px 0; color: var(--navy-darkest); line-height: 1;" id="result-score">0/100</div>
-
-      <div style="display: flex; justify-content: space-around; background: #f8fafc; padding: 30px; border-radius: 28px; margin: 30px 0; border: 1px solid #e2e8f0; flex-wrap: wrap; gap: 18px;">
-        <div><div style="font-weight: 900; font-size: 1.8rem;" id="res-correct">0</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">BETUL</div></div>
-        <div><div style="font-weight: 900; font-size: 1.8rem; color: var(--error);" id="res-wrong">0</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">SALAH</div></div>
-        <div><div style="font-weight: 900; font-size: 1.8rem; color: var(--success);" id="res-pct">0%</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">SKOR</div></div>
+      
+      <div style="display: flex; justify-content: space-around; background: #f8fafc; padding: 30px; border-radius: 28px; margin: 30px 0; border: 1px solid #e2e8f0;">
+          <div><div style="font-weight: 900; font-size: 1.8rem;" id="res-correct">0</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">BETUL</div></div>
+          <div><div style="font-weight: 900; font-size: 1.8rem; color: var(--error);" id="res-wrong">0</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">SALAH</div></div>
+          <div><div style="font-weight: 900; font-size: 1.8rem; color: var(--success);" id="res-pct">0%</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">SKOR</div></div>
       </div>
 
       <button class="btn btn-primary" id="btn-retake" onclick="handleRetake()">CUBA LAGI (RETAKE)</button>
-      <p id="retake-info" style="font-size: 0.95rem; margin-top: 20px; font-weight: 800; color: var(--text-muted);"></p>
+      <p id="retake-info" style="font-size: 0.9rem; margin-top: 20px; font-weight: 800; color: var(--text-muted);"></p>
     </div>
 
     <div class="card">
@@ -446,310 +389,143 @@
 </div>
 
 <script>
-  let APP_CONFIG = { maxAttempts: 3 };
-
-  let state = {
-    student: null,
-    attempt_no: 1,
-    questions: [],
-    currentIdx: 0,
-    answers: {},
-    started_at: null
-  };
-
-  document.addEventListener('DOMContentLoaded', () => {
-    google.script.run
-      .withSuccessHandler(cfg => {
-        APP_CONFIG = cfg || APP_CONFIG;
-      })
-      .withFailureHandler(() => {})
-      .getAppConfig();
-  });
+  let state = { student: null, attempt_no: 1, questions: [], currentIdx: 0, answers: {}, started_at: null };
 
   function handleLogin() {
-    const matric = document.getElementById('matric-input').value.trim().toUpperCase();
-    document.getElementById('matric-input').value = matric;
-
-    if (!matric) {
-      showLoginError('Sila masukkan nombor matrik.');
-      return;
-    }
-
-    hideLoginError();
-    hideLoginInfo();
-    toggleLoading(true, 'Mengesahkan Nombor Matrik...');
-
-    google.script.run
-      .withSuccessHandler(res => {
-        if (res.success) {
-          state.student = res.student;
-          state.attempt_no = res.attempt_no;
-
-          document.getElementById('login-info').innerHTML =
-            `<strong>${escapeHtml(res.student.name || '')}</strong><br>` +
-            `Matrik: <strong>${escapeHtml(res.student.matric_no)}</strong><br>` +
-            `Cubaan semasa: <strong>${res.attempt_no}</strong> / <strong>${res.max_attempts}</strong><br>` +
-            `Baki selepas cubaan ini: <strong>${Math.max(res.remaining_attempts - 1, 0)}</strong>`;
-          showLoginInfo();
-
-          startQuiz();
-        } else {
+    const matric = document.getElementById('matric-input').value.trim();
+    if(!matric) return;
+    
+    document.getElementById('login-error').classList.add('hidden');
+    toggleLoading(true, "Mengesahkan Nombor Matrik...");
+    
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
+      google.script.run
+        .withSuccessHandler(res => {
+          if(res.success) {
+            state.student = res.student;
+            state.attempt_no = res.attempt_no;
+            startQuiz();
+          } else {
+            toggleLoading(false);
+            const errDiv = document.getElementById('login-error');
+            errDiv.innerText = res.message;
+            errDiv.classList.remove('hidden');
+          }
+        })
+        .withFailureHandler(err => {
           toggleLoading(false);
-          showLoginError(res.message || 'Gagal log masuk.');
-        }
-      })
-      .withFailureHandler(err => {
-        toggleLoading(false);
-        showLoginError(err && err.message ? err.message : 'Ralat semasa semakan nombor matrik.');
-      })
-      .validateStudent(matric);
+          const errDiv = document.getElementById('login-error');
+          errDiv.innerText = "Ralat Komunikasi: Sila semak sambungan internet anda.";
+          errDiv.classList.remove('hidden');
+        })
+        .validateStudent(matric);
+    }
   }
 
   function startQuiz() {
-    toggleLoading(true, 'Menyusun Soalan...');
-
+    toggleLoading(true, "Menyusun Soalan...");
     google.script.run
       .withSuccessHandler(questions => {
-        state.questions = questions || [];
-        state.currentIdx = 0;
-        state.answers = {};
+        state.questions = questions; 
+        state.currentIdx = 0; 
+        state.answers = {}; 
         state.started_at = new Date().toISOString();
-
-        const restored = restoreProgress();
-        if (restored) {
-          state.currentIdx = restored.currentIdx || 0;
-          state.answers = restored.answers || {};
-          state.started_at = restored.started_at || state.started_at;
-        }
-
-        renderQuestion();
-        showScreen('screen-quiz');
+        renderQuestion(); 
+        showScreen('screen-quiz'); 
         toggleLoading(false);
       })
       .withFailureHandler(err => {
         toggleLoading(false);
-        showLoginError(err && err.message ? err.message : 'Gagal memuatkan soalan.');
-        showScreen('screen-login');
+        alert("Gagal memuatkan soalan: " + err.message);
       })
-      .getQuizData(state.student.matric_no);
+      .getQuizData();
   }
 
   function renderQuestion() {
     if (!state.questions || !state.questions.length) return;
-
     const q = state.questions[state.currentIdx];
+    
     document.getElementById('q-text').innerText = q.question;
     document.getElementById('quiz-progress-text').innerText = `SOALAN ${state.currentIdx + 1} / ${state.questions.length}`;
-    document.getElementById('quiz-attempt-info').innerText = `CUBAAN ${state.attempt_no} / ${APP_CONFIG.maxAttempts}`;
-    document.getElementById('progress-fill').style.width = (((state.currentIdx + 1) / state.questions.length) * 100) + '%';
-
+    document.getElementById('quiz-attempt-info').innerText = `CUBAAN ${state.attempt_no} / 3`;
+    document.getElementById('progress-fill').style.width = ((state.currentIdx + 1) / state.questions.length * 100) + '%';
+    
     const optContainer = document.getElementById('options-container');
     optContainer.innerHTML = '';
-
+    
     q.options.forEach(opt => {
       const div = document.createElement('div');
       div.className = 'option-card' + (state.answers[q.id] === opt.id ? ' selected' : '');
-      div.innerHTML = `<span class="arabic-text" style="margin-bottom:0;">${escapeHtml(opt.text)}</span>`;
-      div.onclick = () => {
-        state.answers[q.id] = opt.id;
-        saveProgress();
-        renderQuestion();
-      };
+      div.innerHTML = `<span class="arabic-text" style="margin-bottom:0;">${opt.text}</span>`;
+      div.onclick = () => { state.answers[q.id] = opt.id; renderQuestion(); };
       optContainer.appendChild(div);
     });
-
+    
     document.getElementById('btn-prev').disabled = state.currentIdx === 0;
     const isLast = state.currentIdx === state.questions.length - 1;
     document.getElementById('btn-next').classList.toggle('hidden', isLast);
     document.getElementById('btn-submit').classList.toggle('hidden', !isLast);
-
     saveProgress();
   }
 
-  function nextQuestion() {
-    if (state.currentIdx < state.questions.length - 1) {
-      state.currentIdx++;
-      renderQuestion();
-    }
-  }
-
-  function prevQuestion() {
-    if (state.currentIdx > 0) {
-      state.currentIdx--;
-      renderQuestion();
-    }
-  }
-
-  function confirmSubmit() {
-    const unanswered = state.questions.filter(q => !state.answers[q.id]).length;
-    const msg = unanswered > 0
-      ? `Masih ada ${unanswered} soalan belum dijawab. Adakah anda pasti mahu hantar?`
-      : 'Adakah anda pasti mahu menghantar semua jawapan sekarang?';
-
-    if (confirm(msg)) {
-      submitQuiz();
-    }
-  }
-
+  function nextQuestion() { if(state.currentIdx < state.questions.length - 1) { state.currentIdx++; renderQuestion(); } }
+  function prevQuestion() { if(state.currentIdx > 0) { state.currentIdx--; renderQuestion(); } }
+  function confirmSubmit() { if(confirm(`Adakah anda pasti mahu menghantar semua jawapan sekarang?`)) submitQuiz(); }
+  
   function submitQuiz() {
-    toggleLoading(true, 'Menghantar Jawapan...');
-
+    toggleLoading(true, "Menghantar Jawapan...");
     google.script.run
-      .withSuccessHandler(res => {
-        clearProgress();
-        showResult(res);
+      .withSuccessHandler(res => { 
+        localStorage.removeItem('quiz_progress_' + state.student.matric_no); 
+        showResult(res); 
       })
       .withFailureHandler(err => {
         toggleLoading(false);
-        alert(err && err.message ? err.message : 'Gagal menghantar jawapan. Sila cuba lagi.');
+        alert("Gagal menghantar jawapan. Sila cuba lagi.");
       })
-      .submitAttempt({
-        matric_no: state.student.matric_no,
-        attempt_no: state.attempt_no,
-        answers: state.answers,
-        questions: state.questions,
-        started_at: state.started_at
+      .submitAttempt({ 
+        matric_no: state.student.matric_no, 
+        attempt_no: state.attempt_no, 
+        answers: state.answers, 
+        question_order: state.questions.map(q => q.id), 
+        started_at: state.started_at 
       });
   }
 
   function showResult(res) {
     showScreen('screen-result');
-
-    document.getElementById('result-score').innerText = `${res.score} / ${res.totalQuestions}`;
-    document.getElementById('res-correct').innerText = res.correct;
-    document.getElementById('res-wrong').innerText = res.wrong;
-    document.getElementById('res-pct').innerText = Number(res.percentage || 0).toFixed(0) + '%';
-
+    document.getElementById('result-score').innerText = `${res.score} / ${res.total}`;
+    document.getElementById('res-correct').innerText = res.score;
+    document.getElementById('res-wrong').innerText = res.total - res.score;
+    document.getElementById('res-pct').innerText = (res.percentage || 0).toFixed(0) + '%';
     const retakeBtn = document.getElementById('btn-retake');
     const retakeInfo = document.getElementById('retake-info');
-
-    if (res.perfect) {
-      document.getElementById('result-status').innerText = 'Cemerlang!';
-      retakeBtn.classList.add('hidden');
-      retakeInfo.innerText = 'Anda telah mendapat markah penuh.';
-    } else if (res.canRetake) {
-      document.getElementById('result-status').innerText = 'Cuba Lagi!';
-      retakeBtn.classList.remove('hidden');
-      retakeInfo.innerText = `Baki cubaan: ${res.remaining}`;
-    } else {
-      document.getElementById('result-status').innerText = 'Selesai';
-      retakeBtn.classList.add('hidden');
-      retakeInfo.innerText = 'Had cubaan tamat.';
-    }
-
-    fetchLeaderboard();
+    if(res.percentage === 100) { document.getElementById('result-status').innerText = "Cemerlang!"; retakeBtn.classList.add('hidden'); }
+    else if (res.remaining > 0) { document.getElementById('result-status').innerText = "Cuba Lagi!"; retakeBtn.classList.remove('hidden'); retakeInfo.innerText = `Baki cubaan: ${res.remaining}`; }
+    else { document.getElementById('result-status').innerText = "Selesai"; retakeBtn.classList.add('hidden'); retakeInfo.innerText = "Had cubaan tamat."; }
+    fetchLeaderboard(); 
     toggleLoading(false);
   }
 
   function fetchLeaderboard() {
-    google.script.run
-      .withSuccessHandler(lb => {
-        const tbody = document.getElementById('leaderboard-body');
-        tbody.innerHTML = (lb || []).map(row => `
-          <tr>
-            <td>${row.rank}</td>
-            <td style="font-weight:800; color:var(--navy-deep);">${escapeHtml(row.matric_no)}</td>
-            <td>${row.highest_score}</td>
-            <td style="font-weight:800; color:var(--success);">${Number(row.highest_percentage || 0).toFixed(0)}%</td>
-          </tr>
-        `).join('');
-      })
-      .withFailureHandler(() => {
-        document.getElementById('leaderboard-body').innerHTML = '';
-      })
-      .getLeaderboard();
+    google.script.run.withSuccessHandler(lb => {
+      document.getElementById('leaderboard-body').innerHTML = lb.map(row => `<tr><td>${row[0]}</td><td style="font-weight:800; color:var(--navy-deep);">${row[1]}</td><td>${row[2]}</td><td style="font-weight:800; color:var(--success);">${(row[3] || 0).toFixed(0)}%</td></tr>`).join('');
+    }).getLeaderboard();
   }
 
-  function handleRetake() {
-    hideLoginError();
-    hideLoginInfo();
-    document.getElementById('matric-input').value = state.student ? state.student.matric_no : '';
-    showScreen('screen-login');
-    window.scrollTo(0, 0);
+  function handleRetake() { handleLogin(); }
+  function showScreen(id) { ['screen-login', 'screen-quiz', 'screen-result'].forEach(s => { const el = document.getElementById(s); if (el) el.classList.add('hidden'); }); const target = document.getElementById(id); if (target) target.classList.remove('hidden'); window.scrollTo(0,0); }
+  
+  function toggleLoading(show, text = "") { 
+    const l = document.getElementById('loading'); 
+    const lt = document.getElementById('loading-text'); 
+    if (l) { 
+      if (lt && text) lt.innerText = text.toString().toUpperCase(); 
+      l.classList.toggle('hidden', !show); 
+    } 
   }
-
-  function showScreen(id) {
-    ['screen-login', 'screen-quiz', 'screen-result'].forEach(s => {
-      const el = document.getElementById(s);
-      if (el) el.classList.add('hidden');
-    });
-    const target = document.getElementById(id);
-    if (target) target.classList.remove('hidden');
-    window.scrollTo(0, 0);
-  }
-
-  function toggleLoading(show, text = '') {
-    const l = document.getElementById('loading');
-    const lt = document.getElementById('loading-text');
-    if (lt && text) lt.innerText = text.toUpperCase();
-    l.classList.toggle('hidden', !show);
-  }
-
-  function showLoginError(msg) {
-    const el = document.getElementById('login-error');
-    el.innerText = msg;
-    el.classList.remove('hidden');
-  }
-
-  function hideLoginError() {
-    const el = document.getElementById('login-error');
-    el.classList.add('hidden');
-    el.innerText = '';
-  }
-
-  function showLoginInfo() {
-    document.getElementById('login-info').classList.remove('hidden');
-  }
-
-  function hideLoginInfo() {
-    const el = document.getElementById('login-info');
-    el.classList.add('hidden');
-    el.innerHTML = '';
-  }
-
-  function progressKey() {
-    return state.student ? `quiz_progress_${state.student.matric_no}_${state.attempt_no}` : null;
-  }
-
-  function saveProgress() {
-    const key = progressKey();
-    if (!key) return;
-
-    localStorage.setItem(key, JSON.stringify({
-      attempt_no: state.attempt_no,
-      answers: state.answers,
-      currentIdx: state.currentIdx,
-      started_at: state.started_at
-    }));
-  }
-
-  function restoreProgress() {
-    const key = progressKey();
-    if (!key) return null;
-
-    const raw = localStorage.getItem(key);
-    if (!raw) return null;
-
-    try {
-      return JSON.parse(raw);
-    } catch (e) {
-      return null;
-    }
-  }
-
-  function clearProgress() {
-    const key = progressKey();
-    if (key) localStorage.removeItem(key);
-  }
-
-  function escapeHtml(str) {
-    return String(str || '')
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  }
+  
+  function saveProgress() { if(state.student) localStorage.setItem('quiz_progress_' + state.student.matric_no, JSON.stringify({ attempt_no: state.attempt_no, answers: state.answers, currentIdx: state.currentIdx })); }
 </script>
 </body>
 </html>
