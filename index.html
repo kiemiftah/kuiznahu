@@ -2,7 +2,7 @@
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>اختبار القواعد العربية</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700&family=Amiri+Quran&family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
@@ -22,228 +22,219 @@
       --error: #ef4444;
     }
 
+    html, body {
+      height: 100%;
+      height: 100dvh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Mengunci scroll layar utama */
+    }
+
     body {
       font-family: 'Arimo', sans-serif;
       background: var(--navy-gradient);
-      background-attachment: fixed;
-      margin: 0;
       display: flex;
       justify-content: center;
-      min-height: 100vh;
-      padding: 0;
+      align-items: center;
     }
 
     .container {
       width: 100%;
       max-width: 850px; 
-      padding: 20px;
-      box-sizing: border-box;
+      height: 100%;
+      height: 100dvh;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      box-sizing: border-box;
+      padding: 15px; /* Ruang supaya bucu bulat kelihatan */
     }
 
     .card {
       background: var(--card-bg);
-      border-radius: 32px;
-      padding: 40px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
-      margin-bottom: 24px;
       width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 25px;
       box-sizing: border-box;
       text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      border-radius: 32px; /* Kekalkan rounded box */
+      overflow: hidden; 
+    }
+
+    #screen-login, #screen-quiz, #screen-result {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .logo-container {
       display: flex;
       justify-content: center;
-      margin-bottom: 25px;
+      margin-bottom: 5px;
+      flex-shrink: 0; 
     }
     
     .app-logo {
-      width: 150px;
-      height: 150px;
+      width: 180px; 
+      height: 180px;
       border-radius: 50%; 
       object-fit: cover;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       background: #fff;
-      border: 5px solid #fff;
+      border: 6px solid #fff;
+      transition: all 0.3s ease-in-out;
+      flex-shrink: 0;
     }
 
     .app-title {
       font-family: 'Cairo', sans-serif;
-      font-size: 2.8rem;
+      font-size: 2.8rem; 
       font-weight: 900;
       text-align: center;
-      margin-bottom: 20px;
-      background: linear-gradient(to bottom, #1e3a8a, #020617);
+      margin-bottom: 0px;
+      background: var(--navy-gradient);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      line-height: 1.2;
+      line-height: 1.4; /* Mengelakkan huruf terputus */
+      padding: 5px 0;   /* Ruang render gradien */
+      flex-shrink: 0;
+      letter-spacing: -0.5px;
     }
 
     .instruction-box {
       text-align: center;
-      margin-bottom: 30px;
+      margin-top: 40px; /* Diturunkan lebih banyak sesuai permintaan */
+      margin-bottom: 15px;
       background: #f8fafc;
-      padding: 25px;
+      padding: 15px;
       border-radius: 20px;
       border: 1px solid #e2e8f0;
-      max-width: 95%;
-      margin: 0 auto 30px;
+      flex-shrink: 0;
     }
 
     .instruction-ar {
       font-family: 'Tajawal', sans-serif;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       direction: rtl;
-      line-height: 1.6;
+      line-height: 1.4;
       color: var(--navy-medium);
-      margin-bottom: 12px;
-      text-align: center;
+      margin-bottom: 4px;
     }
 
     .instruction-ms {
-      font-size: 0.85rem;
-      line-height: 1.5;
+      font-size: 0.65rem;
+      line-height: 1.2;
       color: var(--text-muted);
       font-weight: 700;
       text-transform: uppercase;
-      text-align: center;
-      letter-spacing: 0.5px;
-    }
-
-    /* Kotak Soalan Besar & Berpusat */
-    .question-box {
-      background: #fdfdfd;
-      border-top: 5px solid var(--primary-blue);
-      padding: 40px 30px;
-      border-radius: 24px;
-      margin-bottom: 40px;
-      box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
-      text-align: center;
-    }
-
-    .roman-text {
-      font-family: 'Arimo', sans-serif;
-      direction: ltr;
-      text-align: center;
-      font-size: 1.5rem; 
-      font-weight: 700;
-      color: var(--navy-darkest);
-      line-height: 1.5;
-    }
-
-    /* Teks Arab Berpusat dengan Amiri Quran (RTL) */
-    .arabic-text {
-      font-family: 'Amiri Quran', serif;
-      font-size: 2.2rem; 
-      direction: rtl;
-      line-height: 2.8; 
-      text-align: center;
-      color: var(--navy-darkest);
-      width: 100%;
-      display: block;
-    }
-
-    /* Grid Jawapan Pintar (2 Kolum Desktop, 1 Kolum Mobile) */
-    #options-container {
-      display: grid;
-      grid-template-columns: 1fr; 
-      gap: 20px;
-      width: 100%;
-    }
-
-    @media (min-width: 650px) {
-      #options-container {
-        grid-template-columns: 1fr 1fr;
-      }
     }
 
     .login-form {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+    /* Kotak Soalan */
+    .question-box {
+      background: #fdfdfd;
+      border-top: 5px solid var(--primary-blue);
+      padding: 15px;
+      border-radius: 24px;
+      margin-bottom: 10px;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .arabic-text {
+      font-family: 'Amiri Quran', serif;
+      font-size: 1.6rem; 
+      direction: rtl;
+      line-height: 1.8; 
+      text-align: center;
+      color: var(--navy-darkest);
       width: 100%;
+      display: block;
+    }
+
+    /* Options Container */
+    #options-container {
+      display: grid;
+      grid-template-columns: 1fr; 
+      gap: 10px;
+      width: 100%;
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 5px;
+    }
+
+    @media (min-width: 650px) {
+      #options-container {
+        grid-template-columns: 1fr 1fr;
+        align-content: center;
+      }
     }
 
     label { 
       display: block; 
-      margin-bottom: 15px; 
+      margin-bottom: 8px; 
       font-weight: 800; 
-      font-size: 0.9rem; 
+      font-size: 0.8rem; 
       color: var(--navy-dark);
-      text-align: center;
-      letter-spacing: 1px;
     }
     
     input[type="text"] {
       width: 100%;
-      max-width: 450px;
-      padding: 20px;
+      max-width: 350px;
+      padding: 12px;
       border: 2px solid #e2e8f0;
-      border-radius: 20px;
-      font-size: 1.4rem;
+      border-radius: 18px;
+      font-size: 1.2rem;
       text-align: center;
       text-transform: uppercase;
-      margin-bottom: 15px;
-      box-sizing: border-box;
+      margin-bottom: 10px;
       background: #fcfcfc;
-      transition: border-color 0.3s;
-    }
-
-    input[type="text"]:focus {
-      outline: none;
-      border-color: var(--primary-blue);
-      background: #fff;
     }
 
     .btn {
       width: 100%;
-      max-width: 450px;
-      padding: 22px;
+      max-width: 350px;
+      padding: 18px;
       border: none;
-      border-radius: 20px;
+      border-radius: 18px;
       font-weight: 900;
       cursor: pointer;
-      font-size: 1.1rem;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      margin: 10px auto;
+      font-size: 1rem;
+      transition: 0.2s;
+      margin: 4px auto;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      flex-shrink: 0;
     }
-
-    .btn:active { transform: scale(0.96); }
 
     .btn-primary { 
       background: var(--navy-gradient);
       color: white; 
       box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.4);
     }
-    
-    .btn-primary:hover {
-      box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.5);
-      opacity: 0.95;
-    }
 
     .option-card {
       border: 2px solid #f1f5f9;
-      border-radius: 24px;
-      padding: 30px 20px;
+      border-radius: 20px;
+      padding: 12px;
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
       background: #fff;
-      transition: all 0.25s ease;
+      transition: 0.2s;
       box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-      min-height: 120px; 
-    }
-
-    .option-card:hover { 
-      border-color: var(--accent-blue); 
-      background: #f8fbff;
-      transform: translateY(-3px);
+      min-height: 60px; 
     }
 
     .option-card.selected { 
@@ -254,54 +245,63 @@
 
     .nav-buttons { 
       display: flex; 
-      gap: 15px; 
-      margin-top: 45px; 
+      gap: 10px; 
+      margin-top: 10px; 
       width: 100%;
       justify-content: center;
+      flex-shrink: 0;
     }
-    .nav-buttons button { 
-      flex: 1; 
-      max-width: 250px;
-    }
+    
+    .nav-buttons button { flex: 1; max-width: 180px; }
 
     .progress-bar {
-      height: 14px;
+      height: 8px;
       background: #f1f5f9;
       border-radius: 12px;
-      margin-bottom: 35px;
+      margin-bottom: 8px;
       overflow: hidden;
-      border: 1px solid #e2e8f0;
       width: 100%;
+      flex-shrink: 0;
     }
-    .progress-fill { height: 100%; background: var(--primary-blue); width: 0%; transition: width 0.6s ease-in-out; }
+    .progress-fill { height: 100%; background: var(--primary-blue); width: 0%; transition: 0.5s ease-in-out; }
 
     .hidden { display: none !important; }
     
     .loading-overlay {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(2, 6, 23, 0.97);
+      position: fixed; inset: 0;
+      background: rgba(2, 6, 23, 0.98);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      z-index: 9999;
-      color: white;
-      text-align: center;
-      backdrop-filter: blur(10px);
+      z-index: 9999; color: white; text-align: center;
     }
 
-    .leaderboard-table {
-      width: 100%; border-collapse: collapse;
-      margin-top: 10px;
+    .leaderboard-container {
+      flex-grow: 1;
+      overflow-y: auto;
+      margin-top: 5px;
+      border: 1px solid #f1f5f9;
+      border-radius: 20px;
     }
-    .leaderboard-table th { padding: 15px; text-align: center; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; border-bottom: 2px solid #f1f5f9; }
-    .leaderboard-table td { padding: 20px 15px; border-bottom: 1px solid #f1f5f9; text-align: center; font-weight: 600; }
+
+    .leaderboard-table { width: 100%; border-collapse: collapse; }
+    .leaderboard-table th { padding: 10px; font-size: 0.7rem; border-bottom: 2px solid #f1f5f9; position: sticky; top: 0; background: #fff; }
+    .leaderboard-table td { padding: 8px; border-bottom: 1px solid #f1f5f9; font-weight: 600; font-size: 0.8rem; }
     
     @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
     @media (max-width: 480px) {
-      .card { padding: 35px 20px; }
-      .app-title { font-size: 2.2rem; }
-      .arabic-text { font-size: 1.8rem; }
-      .roman-text { font-size: 1.25rem; }
-      .app-logo { width: 120px; height: 120px; }
+      .card { padding: 20px; border-radius: 32px; } 
+      .app-title { font-size: 1.8rem; line-height: 1.4; padding: 2px 0; } 
+      .arabic-text { font-size: 1.4rem; }
+      .app-logo { width: 130px; height: 130px; border-width: 4px; } 
+      .option-card { min-height: 50px; padding: 8px; }
+      .container { padding: 10px; }
+      .instruction-box { margin-top: 25px; } 
+    }
+    
+    @media (max-height: 650px) {
+      .app-logo { width: 100px; height: 100px; }
+      .app-title { font-size: 1.5rem; }
+      .instruction-box { margin-top: 10px; padding: 8px; }
     }
   </style>
 </head>
@@ -309,8 +309,8 @@
 
   <!-- Loading State -->
   <div id="loading" class="loading-overlay hidden">
-    <div style="border: 6px solid rgba(255,255,255,0.1); border-top: 6px solid white; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite;"></div>
-    <p id="loading-text" style="margin-top: 25px; font-weight: 800; font-family: 'Cairo'; letter-spacing: 2px; font-size: 1.1rem;">SILA TUNGGU...</p>
+    <div style="border: 6px solid rgba(255,255,255,0.1); border-top: 6px solid white; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite;"></div>
+    <p id="loading-text" style="margin-top: 25px; font-weight: 800; letter-spacing: 2px;">SILA TUNGGU...</p>
   </div>
 
   <div class="container">
@@ -329,70 +329,57 @@
         <input type="text" id="matric-input" placeholder="A12345" autocomplete="off" 
                oninput="this.value = this.value.toUpperCase()"
                onkeydown="if(event.key === 'Enter') handleLogin()">
-        <button class="btn btn-primary" onclick="handleLogin()">MULAKAN KUIZ SEKARANG</button>
+        <button class="btn btn-primary" onclick="handleLogin()">MULAKAN KUIZ</button>
       </div>
-      <div id="login-error" style="color: var(--error); margin-top: 25px; font-size: 0.9rem; text-align: center; font-weight: 800;" class="hidden"></div>
+      <div id="login-error" style="color: var(--error); margin-top: 5px; font-size: 0.8rem; font-weight: 800;" class="hidden"></div>
     </div>
 
     <!-- Screen 2: Quiz -->
     <div id="screen-quiz" class="hidden">
       <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%;">
-          <span id="quiz-progress-text" style="font-weight: 800; font-size: 0.95rem; color: var(--navy-deep);">SOALAN 1 / 100</span>
-          <span id="quiz-attempt-info" style="font-size: 0.75rem; font-weight: 900; background: #eff6ff; color: #1e40af; padding: 8px 16px; border-radius: 12px; border: 1px solid #dbeafe;">CUBAAN 1/3</span>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+          <span id="quiz-progress-text" style="font-weight: 800; font-size: 0.8rem; color: var(--navy-deep);">SOALAN 1/100</span>
+          <span id="quiz-attempt-info" style="font-size: 0.7rem; font-weight: 900; background: #eff6ff; color: #1e40af; padding: 6px 12px; border-radius: 12px;">CUBAAN 1/3</span>
         </div>
         <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
         
-        <div id="question-container">
-          <div class="question-box">
-            <div class="roman-text" id="q-text">Memuatkan...</div>
-          </div>
-          <div id="options-container"></div>
+        <div class="question-box">
+          <div id="q-text" class="arabic-text">...</div>
         </div>
+        
+        <div id="options-container"></div>
 
         <div class="nav-buttons">
-          <button class="btn" style="background: #f1f5f9; color: #334155; border: 1px solid #e2e8f0; font-weight: 700;" id="btn-prev" onclick="prevQuestion()" disabled>KEMBALI</button>
+          <button class="btn" style="background: #f1f5f9; color: #334155;" id="btn-prev" onclick="prevQuestion()" disabled>KEMBALI</button>
           <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">SETERUSNYA</button>
         </div>
-        <button class="btn hidden" id="btn-submit" style="background: var(--success); color: white; margin-top: 20px; max-width: 100%; box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);" onclick="confirmSubmit()">HANTAR JAWAPAN SEKARANG</button>
+        <button class="btn hidden" id="btn-submit" style="background: var(--success); color: white; margin-top: 5px; max-width: 100%; box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);" onclick="confirmSubmit()">HANTAR JAWAPAN</button>
       </div>
     </div>
 
     <!-- Screen 3: Result -->
     <div id="screen-result" class="hidden">
-      <div class="card" style="text-align: center;">
-        <h1 style="font-family: 'Cairo'; font-size: 2.5rem; color: var(--navy-dark); font-weight: 900;" id="result-status">Keputusan</h1>
-        <div style="font-size: 5.5rem; font-weight: 900; margin: 15px 0; color: var(--navy-darkest); line-height: 1;" id="result-score">0/100</div>
+      <div class="card">
+        <h1 style="font-family: 'Cairo'; font-size: 1.6rem; margin: 0;" id="result-status">Keputusan</h1>
+        <div style="font-size: 3.5rem; font-weight: 900; margin: 5px 0;" id="result-score">0/100</div>
         
-        <div style="display: flex; justify-content: space-around; background: #f8fafc; padding: 30px; border-radius: 28px; margin: 30px 0; border: 1px solid #e2e8f0;">
-            <div><div style="font-weight: 900; font-size: 1.8rem;" id="res-correct">0</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">BETUL</div></div>
-            <div><div style="font-weight: 900; font-size: 1.8rem; color: var(--error);" id="res-wrong">0</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">SALAH</div></div>
-            <div><div style="font-weight: 900; font-size: 1.8rem; color: var(--success);" id="res-pct">0%</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">SKOR</div></div>
+        <div style="display: flex; justify-content: space-around; background: #f8fafc; padding: 12px; border-radius: 20px; margin: 5px 0; border: 1px solid #e2e8f0;">
+            <div><div style="font-weight: 900; font-size: 1.2rem;" id="res-correct">0</div><div style="font-size: 0.6rem;">BETUL</div></div>
+            <div><div style="font-weight: 900; font-size: 1.2rem; color: var(--error);" id="res-wrong">0</div><div style="font-size: 0.6rem;">SALAH</div></div>
+            <div><div style="font-weight: 900; font-size: 1.2rem; color: var(--success);" id="res-pct">0%</div><div style="font-size: 0.6rem;">SKOR</div></div>
         </div>
 
-        <button class="btn btn-primary" id="btn-retake" onclick="location.reload()">CUBA LAGI (RETAKE)</button>
-        <p id="retake-info" style="font-size: 0.9rem; margin-top: 20px; font-weight: 800; color: var(--text-muted);"></p>
-      </div>
+        <button class="btn btn-primary" onclick="location.reload()">CUBA LAGI</button>
+        <p id="retake-info" style="font-size: 0.75rem; margin-bottom: 5px; font-weight: 800; color: var(--text-muted);"></p>
 
-      <div class="card">
-        <h2 style="font-family: 'Cairo'; font-size: 1.6rem; margin-top: 0; color: var(--navy-darkest); text-align: center; margin-bottom: 20px; font-weight: 800;">Kedudukan Top 5</h2>
-        <table class="leaderboard-table">
-          <thead>
-            <tr>
-              <th>KED</th>
-              <th>MATRIK</th>
-              <th>SKOR</th>
-              <th>TARIKH</th>
-            </tr>
-          </thead>
-          <tbody id="leaderboard-body"></tbody>
-        </table>
+        <div class="leaderboard-container">
+          <table class="leaderboard-table"><tbody id="leaderboard-body"></tbody></table>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    // URL WEB APP YANG TELAH DIKEMASKINI
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz-ke8YtTG0tzqE7hc80F7aWVVhz6OECIfkXHM7VMx3swLt_-Nu9mRmBQulonlh-dbS_w/exec";
 
     let state = { student: null, attempt_no: 1, questions: [], currentIdx: 0, answers: {}, started_at: null };
@@ -408,10 +395,8 @@
     async function handleLogin() {
       const matric = document.getElementById('matric-input').value.trim();
       if(!matric) return;
-      
       document.getElementById('login-error').classList.add('hidden');
-      toggleLoading(true, "Mengesahkan Nombor Matrik...");
-      
+      toggleLoading(true, "Mengesahkan...");
       try {
         const res = await callApi('validateStudent', matric);
         if(res.success) {
@@ -450,11 +435,10 @@
     function renderQuestion() {
       if (!state.questions || !state.questions.length) return;
       const q = state.questions[state.currentIdx];
-      
       document.getElementById('q-text').innerText = q.question;
-      document.getElementById('quiz-progress-text').innerText = `SOALAN ${state.currentIdx + 1} / ${state.questions.length}`;
-      document.getElementById('quiz-attempt-info').innerText = `CUBAAN ${state.attempt_no} / 3`;
-      document.getElementById('progress-fill').style.width = ((state.currentIdx + 1) / state.questions.length * 100) + '%';
+      document.getElementById('quiz-progress-text').innerText = `SOALAN ${state.currentIdx + 1}/100`;
+      document.getElementById('quiz-attempt-info').innerText = `CUBAAN ${state.attempt_no}/3`;
+      document.getElementById('progress-fill').style.width = ((state.currentIdx + 1) / 100 * 100) + '%';
       
       const optContainer = document.getElementById('options-container');
       optContainer.innerHTML = '';
@@ -462,23 +446,23 @@
       q.options.forEach(opt => {
         const div = document.createElement('div');
         div.className = 'option-card' + (state.answers[q.id] === opt.id ? ' selected' : '');
-        div.innerHTML = `<span class="arabic-text" style="margin-bottom:0;">${opt.text}</span>`;
+        div.innerHTML = `<span class="arabic-text" style="font-size:1.15rem; line-height:1.4;">${opt.text}</span>`;
         div.onclick = () => { state.answers[q.id] = opt.id; renderQuestion(); };
         optContainer.appendChild(div);
       });
       
       document.getElementById('btn-prev').disabled = state.currentIdx === 0;
-      const isLast = state.currentIdx === state.questions.length - 1;
+      const isLast = state.currentIdx === 99;
       document.getElementById('btn-next').classList.toggle('hidden', isLast);
       document.getElementById('btn-submit').classList.toggle('hidden', !isLast);
     }
 
-    function nextQuestion() { if(state.currentIdx < state.questions.length - 1) { state.currentIdx++; renderQuestion(); } }
+    function nextQuestion() { if(state.currentIdx < 99) { state.currentIdx++; renderQuestion(); } }
     function prevQuestion() { if(state.currentIdx > 0) { state.currentIdx--; renderQuestion(); } }
-    function confirmSubmit() { if(confirm(`Adakah anda pasti mahu menghantar semua jawapan sekarang?`)) submitQuiz(); }
+    function confirmSubmit() { if(confirm(`Hantar semua jawapan sekarang?`)) submitQuiz(); }
     
     async function submitQuiz() {
-      toggleLoading(true, "Menghantar Jawapan...");
+      toggleLoading(true, "Menghantar...");
       try {
         const res = await callApi('submitAttempt', { 
           matric_no: state.student.matric_no, 
@@ -496,25 +480,14 @@
 
     async function showResult(res) {
       showScreen('screen-result');
-      document.getElementById('result-score').innerText = `${res.score} / ${res.total}`;
+      document.getElementById('result-score').innerText = `${res.score}/100`;
       document.getElementById('res-correct').innerText = res.score;
-      document.getElementById('res-wrong').innerText = res.total - res.score;
-      document.getElementById('res-pct').innerText = (res.percentage || 0).toFixed(0) + '%';
+      document.getElementById('res-wrong').innerText = 100 - res.score;
+      document.getElementById('res-pct').innerText = Math.round(res.percentage) + '%';
       
-      const retakeBtn = document.getElementById('btn-retake');
-      const retakeInfo = document.getElementById('retake-info');
-      if(res.percentage === 100) { 
-        document.getElementById('result-status').innerText = "Cemerlang!"; 
-        retakeBtn.classList.add('hidden'); 
-      } else if (res.remaining > 0) { 
-        document.getElementById('result-status').innerText = "Cuba Lagi!"; 
-        retakeBtn.classList.remove('hidden'); 
-        retakeInfo.innerText = `Baki cubaan: ${res.remaining}`; 
-      } else { 
-        document.getElementById('result-status').innerText = "Selesai"; 
-        retakeBtn.classList.add('hidden'); 
-        retakeInfo.innerText = "Had cubaan tamat."; 
-      }
+      const info = document.getElementById('retake-info');
+      if (res.remaining > 0) info.innerText = `Baki cubaan: ${res.remaining}`;
+      else info.innerText = "Had cubaan tamat.";
       
       const lb = await callApi('getLeaderboard');
       document.getElementById('leaderboard-body').innerHTML = lb.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}%</td><td>${new Date(r[3]).toLocaleDateString()}</td></tr>`).join('');
@@ -524,7 +497,6 @@
     function showScreen(id) { 
       ['screen-login', 'screen-quiz', 'screen-result'].forEach(s => document.getElementById(s).classList.add('hidden')); 
       document.getElementById(id).classList.remove('hidden'); 
-      window.scrollTo(0,0); 
     }
     
     function toggleLoading(show, text = "") { 
