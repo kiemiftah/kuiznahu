@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700&family=Amiri+Quran&family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Deep Navy & Dark Blue Palette */
+      /* Palet Warna Premium Navy Blue & Dark Blue */
       --navy-darkest: #020617;
       --navy-dark: #0f172a;
       --navy-deep: #1e3a8a;
@@ -90,8 +90,7 @@
       border-radius: 20px;
       border: 1px solid #e2e8f0;
       max-width: 95%;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto 30px;
     }
 
     .instruction-ar {
@@ -135,7 +134,7 @@
       line-height: 1.5;
     }
 
-    /* Teks Arab Berpusat dengan Amiri Quran */
+    /* Teks Arab Berpusat dengan Amiri Quran (RTL) */
     .arabic-text {
       font-family: 'Amiri Quran', serif;
       font-size: 2.2rem; 
@@ -147,15 +146,14 @@
       display: block;
     }
 
-    /* Grid Jawapan Pintar */
+    /* Grid Jawapan Pintar (2 Kolum Desktop, 1 Kolum Mobile) */
     #options-container {
       display: grid;
-      grid-template-columns: 1fr; /* Portrait */
+      grid-template-columns: 1fr; 
       gap: 20px;
       width: 100%;
     }
 
-    /* 2 kolum untuk skrin besar */
     @media (min-width: 650px) {
       #options-container {
         grid-template-columns: 1fr 1fr;
@@ -174,7 +172,7 @@
       margin-bottom: 15px; 
       font-weight: 800; 
       font-size: 0.9rem; 
-      color: var(--navy-light);
+      color: var(--navy-dark);
       text-align: center;
       letter-spacing: 1px;
     }
@@ -394,7 +392,7 @@
   </div>
 
   <script>
-    // MASUKKAN URL WEB APP ANDA DI SINI
+    // URL WEB APP YANG TELAH DIKEMASKINI
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz-ke8YtTG0tzqE7hc80F7aWVVhz6OECIfkXHM7VMx3swLt_-Nu9mRmBQulonlh-dbS_w/exec";
 
     let state = { student: null, attempt_no: 1, questions: [], currentIdx: 0, answers: {}, started_at: null };
