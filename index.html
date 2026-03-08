@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700&family=Amiri+Quran&family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <style>
     :root {
-      /* Deep Navy & Dark Blue Palette */
       --navy-darkest: #020617;
       --navy-dark: #0f172a;
       --navy-deep: #1e3a8a;
@@ -319,12 +318,11 @@
     </div>
     <div class="app-title">اختبار القواعد العربية</div>
     <div class="instruction-box">
-      <div class="instruction-ar">أجب عن جميع الأسئلة. يُسمح بثلاث محاولات كحد أقصى. الترتيب يعتمد على متوسط درجاتك.</div>
-      <div class="instruction-ms">Sila jawab semua soalan. Maksimum tiga cubaan sahaja. Ranking dikira mengikut purata markah keseluruhan.</div>
+      <div class="instruction-ar">أجب عن جميع الأسئلة. يُسمح بثلاث محاولات كحد أقصى. الترتيب يعتمد pada markah cubaan terbaik anda.</div>
+      <div class="instruction-ms">Sila jawab semua soalan. Maksimum tiga cubaan sahaja. Ranking dikira mengikut markah cubaan terbaik anda.</div>
     </div>
     <div class="login-form">
       <label>SILA MASUKKAN NOMBOR MATRIK PELAJAR</label>
-      <!-- Tambah onkeydown untuk menyokong butang Enter -->
       <input type="text" id="matric-input" placeholder="A12345" autocomplete="off" 
              oninput="this.value = this.value.toUpperCase()"
              onkeydown="if(event.key === 'Enter') handleLogin()">
@@ -417,7 +415,7 @@
         .withFailureHandler(err => {
           toggleLoading(false);
           const errDiv = document.getElementById('login-error');
-          errDiv.innerText = "Ralat Rangkaian: Sila semak sambungan internet anda atau cuba lagi sebentar.";
+          errDiv.innerText = "Ralat Komunikasi: Sila semak sambungan internet anda.";
           errDiv.classList.remove('hidden');
         })
         .validateStudent(matric);
@@ -425,7 +423,7 @@
   }
 
   function startQuiz() {
-    toggleLoading(true, "Menyusun 100 Soalan...");
+    toggleLoading(true, "Menyusun Soalan...");
     google.script.run
       .withSuccessHandler(questions => {
         state.questions = questions; 
@@ -438,7 +436,7 @@
       })
       .withFailureHandler(err => {
         toggleLoading(false);
-        alert("Gagal memuatkan soalan. Sila muat semula halaman.");
+        alert("Gagal memuatkan soalan: " + err.message);
       })
       .getQuizData();
   }
