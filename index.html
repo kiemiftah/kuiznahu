@@ -35,7 +35,7 @@
 
     .container {
       width: 100%;
-      max-width: 850px; /* Diperlebar untuk skrin desktop */
+      max-width: 850px; 
       padding: 20px;
       box-sizing: border-box;
       display: flex;
@@ -63,7 +63,7 @@
     .app-logo {
       width: 150px;
       height: 150px;
-      border-radius: 50%; /* Circle Logo */
+      border-radius: 50%; 
       object-fit: cover;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
       background: #fff;
@@ -114,7 +114,6 @@
       letter-spacing: 0.5px;
     }
 
-    /* Kotak Soalan Besar & Berpusat */
     .question-box {
       background: #fdfdfd;
       border-top: 5px solid var(--primary-blue);
@@ -129,13 +128,12 @@
       font-family: 'Arimo', sans-serif;
       direction: ltr;
       text-align: center;
-      font-size: 1.5rem; /* Saiz soalan yang besar */
+      font-size: 1.5rem; 
       font-weight: 700;
       color: var(--navy-darkest);
       line-height: 1.5;
     }
 
-    /* Teks Arab Berpusat dengan Amiri Quran */
     .arabic-text {
       font-family: 'Amiri Quran', serif;
       font-size: 2.2rem; 
@@ -147,15 +145,13 @@
       display: block;
     }
 
-    /* Grid Jawapan Pintar */
     #options-container {
       display: grid;
-      grid-template-columns: 1fr; /* 1 kolum untuk telefon (portrait) */
+      grid-template-columns: 1fr; 
       gap: 20px;
       width: 100%;
     }
 
-    /* 2 kolum untuk skrin besar atau telefon landscape */
     @media (min-width: 650px) {
       #options-container {
         grid-template-columns: 1fr 1fr;
@@ -239,7 +235,7 @@
       background: #fff;
       transition: all 0.25s ease;
       box-shadow: 0 4px 10px rgba(0,0,0,0.04);
-      min-height: 120px; /* Kotak jawapan lebih tinggi */
+      min-height: 120px; 
     }
 
     .option-card:hover { 
@@ -310,13 +306,11 @@
 <body>
 
 <div class="container">
-  <!-- Loading State -->
   <div id="loading" class="loading-overlay hidden">
     <div style="border: 6px solid rgba(255,255,255,0.1); border-top: 6px solid white; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite;"></div>
     <p id="loading-text" style="margin-top: 25px; font-weight: 800; font-family: 'Cairo'; letter-spacing: 2px; font-size: 1.1rem;">SILA TUNGGU...</p>
   </div>
 
-  <!-- Screen 1: Login -->
   <div id="screen-login" class="card">
     <div class="logo-container">
       <img src="https://img2link.kiemiftah.com/uploads/kuizapplogo.png" alt="Logo Kuiz" class="app-logo" onerror="this.src='https://placehold.co/512x512/0f172a/ffffff?text=NAHU';">
@@ -334,7 +328,6 @@
     <div id="login-error" style="color: var(--error); margin-top: 25px; font-size: 0.9rem; text-align: center; font-weight: 800;" class="hidden"></div>
   </div>
 
-  <!-- Screen 2: Quiz -->
   <div id="screen-quiz" class="hidden">
     <div class="card">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%;">
@@ -358,7 +351,6 @@
     </div>
   </div>
 
-  <!-- Screen 3: Result -->
   <div id="screen-result" class="hidden">
     <div class="card" style="text-align: center;">
       <h1 style="font-family: 'Cairo'; font-size: 2.5rem; color: var(--navy-dark); font-weight: 900;" id="result-status">Keputusan</h1>
@@ -441,7 +433,7 @@
         toggleLoading(false);
         alert("Gagal memuatkan soalan. Sila muat semula halaman.");
       })
-      .getQuizData(state.student.matric_no);
+      .getQuizData();
   }
 
   function renderQuestion() {
@@ -497,9 +489,9 @@
 
   function showResult(res) {
     showScreen('screen-result');
-    document.getElementById('result-score').innerText = `${res.score} / ${res.totalQuestions}`;
+    document.getElementById('result-score').innerText = `${res.score} / ${res.total}`;
     document.getElementById('res-correct').innerText = res.score;
-    document.getElementById('res-wrong').innerText = res.totalQuestions - res.score;
+    document.getElementById('res-wrong').innerText = res.total - res.score;
     document.getElementById('res-pct').innerText = (res.percentage || 0).toFixed(0) + '%';
     const retakeBtn = document.getElementById('btn-retake');
     const retakeInfo = document.getElementById('retake-info');
