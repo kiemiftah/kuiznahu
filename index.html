@@ -306,11 +306,13 @@
 <body>
 
 <div class="container">
+  <!-- Loading State -->
   <div id="loading" class="loading-overlay hidden">
     <div style="border: 6px solid rgba(255,255,255,0.1); border-top: 6px solid white; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite;"></div>
     <p id="loading-text" style="margin-top: 25px; font-weight: 800; font-family: 'Cairo'; letter-spacing: 2px; font-size: 1.1rem;">SILA TUNGGU...</p>
   </div>
 
+  <!-- Screen 1: Login -->
   <div id="screen-login" class="card">
     <div class="logo-container">
       <img src="https://img2link.kiemiftah.com/uploads/kuizapplogo.png" alt="Logo Kuiz" class="app-logo" onerror="this.src='https://placehold.co/512x512/0f172a/ffffff?text=NAHU';">
@@ -322,12 +324,16 @@
     </div>
     <div class="login-form">
       <label>SILA MASUKKAN NOMBOR MATRIK PELAJAR</label>
-      <input type="text" id="matric-input" placeholder="A12345" autocomplete="off" oninput="this.value = this.value.toUpperCase()">
+      <!-- Tambah onkeydown untuk menyokong butang Enter -->
+      <input type="text" id="matric-input" placeholder="A12345" autocomplete="off" 
+             oninput="this.value = this.value.toUpperCase()"
+             onkeydown="if(event.key === 'Enter') handleLogin()">
       <button class="btn btn-primary" onclick="handleLogin()">MULAKAN KUIZ SEKARANG</button>
     </div>
     <div id="login-error" style="color: var(--error); margin-top: 25px; font-size: 0.9rem; text-align: center; font-weight: 800;" class="hidden"></div>
   </div>
 
+  <!-- Screen 2: Quiz -->
   <div id="screen-quiz" class="hidden">
     <div class="card">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%;">
@@ -351,6 +357,7 @@
     </div>
   </div>
 
+  <!-- Screen 3: Result -->
   <div id="screen-result" class="hidden">
     <div class="card" style="text-align: center;">
       <h1 style="font-family: 'Cairo'; font-size: 2.5rem; color: var(--navy-dark); font-weight: 900;" id="result-status">Keputusan</h1>
