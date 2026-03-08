@@ -35,7 +35,7 @@
 
     .container {
       width: 100%;
-      max-width: 850px; /* Lebarkan sedikit untuk skrin besar */
+      max-width: 850px; /* Diperlebar untuk skrin desktop */
       padding: 20px;
       box-sizing: border-box;
       display: flex;
@@ -51,7 +51,7 @@
       margin-bottom: 24px;
       width: 100%;
       box-sizing: border-box;
-      text-align: center; /* Pastikan semua dalam kad centered */
+      text-align: center;
     }
 
     .logo-container {
@@ -61,13 +61,13 @@
     }
     
     .app-logo {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%; 
+      width: 150px;
+      height: 150px;
+      border-radius: 50%; /* Circle Logo */
       object-fit: cover;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
       background: #fff;
-      border: 4px solid #fff;
+      border: 5px solid #fff;
     }
 
     .app-title {
@@ -79,47 +79,49 @@
       background: linear-gradient(to bottom, #1e3a8a, #020617);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      line-height: 1.2;
     }
 
     .instruction-box {
       text-align: center;
       margin-bottom: 30px;
       background: #f8fafc;
-      padding: 20px;
+      padding: 25px;
       border-radius: 20px;
       border: 1px solid #e2e8f0;
-      max-width: 90%;
+      max-width: 95%;
       margin-left: auto;
       margin-right: auto;
     }
 
     .instruction-ar {
       font-family: 'Tajawal', sans-serif;
-      font-size: 1rem;
+      font-size: 1.1rem;
       direction: rtl;
       line-height: 1.6;
       color: var(--navy-medium);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       text-align: center;
     }
 
     .instruction-ms {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       line-height: 1.5;
       color: var(--text-muted);
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       text-align: center;
+      letter-spacing: 0.5px;
     }
 
-    /* Kotak Soalan Besar */
+    /* Kotak Soalan Besar & Berpusat */
     .question-box {
       background: #fdfdfd;
-      border-top: 4px solid var(--primary-blue);
-      padding: 35px 25px;
+      border-top: 5px solid var(--primary-blue);
+      padding: 40px 30px;
       border-radius: 24px;
-      margin-bottom: 35px;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+      margin-bottom: 40px;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.03);
       text-align: center;
     }
 
@@ -127,41 +129,50 @@
       font-family: 'Arimo', sans-serif;
       direction: ltr;
       text-align: center;
-      font-size: 1.4rem; /* Besarkan font soalan */
+      font-size: 1.5rem; /* Saiz soalan yang besar */
       font-weight: 700;
       color: var(--navy-darkest);
+      line-height: 1.5;
     }
 
-    /* Arabic Text centered with large line-height */
+    /* Teks Arab Berpusat dengan Amiri Quran */
     .arabic-text {
       font-family: 'Amiri Quran', serif;
-      font-size: 2.1rem; 
+      font-size: 2.2rem; 
       direction: rtl;
       line-height: 2.8; 
       text-align: center;
       color: var(--navy-darkest);
       width: 100%;
+      display: block;
     }
 
-    /* Grid Jawapan */
+    /* Grid Jawapan Pintar */
     #options-container {
       display: grid;
-      grid-template-columns: 1fr; /* Default mobile (1 column) */
-      gap: 15px;
+      grid-template-columns: 1fr; /* 1 kolum untuk telefon (portrait) */
+      gap: 20px;
       width: 100%;
     }
 
-    /* Responsif untuk skrin besar / landscape */
-    @media (min-width: 600px) {
+    /* 2 kolum untuk skrin besar atau telefon landscape */
+    @media (min-width: 650px) {
       #options-container {
-        grid-template-columns: 1fr 1fr; /* 2 columns */
+        grid-template-columns: 1fr 1fr;
       }
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
 
     label { 
       display: block; 
       margin-bottom: 15px; 
-      font-weight: 700; 
+      font-weight: 800; 
       font-size: 0.9rem; 
       color: var(--navy-light);
       text-align: center;
@@ -170,66 +181,83 @@
     
     input[type="text"] {
       width: 100%;
-      max-width: 400px;
-      padding: 18px;
+      max-width: 450px;
+      padding: 20px;
       border: 2px solid #e2e8f0;
       border-radius: 20px;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       text-align: center;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       box-sizing: border-box;
+      background: #fcfcfc;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      background: #fff;
     }
 
     .btn {
       width: 100%;
-      max-width: 400px;
-      padding: 20px;
+      max-width: 450px;
+      padding: 22px;
       border: none;
       border-radius: 20px;
-      font-weight: 800;
+      font-weight: 900;
       cursor: pointer;
       font-size: 1.1rem;
-      transition: all 0.2s;
-      margin-left: auto;
-      margin-right: auto;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      margin: 10px auto;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
+
+    .btn:active { transform: scale(0.96); }
 
     .btn-primary { 
       background: var(--navy-gradient);
       color: white; 
+      box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.4);
+    }
+    
+    .btn-primary:hover {
+      box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.5);
+      opacity: 0.95;
     }
 
     .option-card {
       border: 2px solid #f1f5f9;
       border-radius: 24px;
-      padding: 25px 15px;
+      padding: 30px 20px;
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
       background: #fff;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-      min-height: 100px; /* Seragamkan saiz kotak jawapan */
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+      min-height: 120px; /* Kotak jawapan lebih tinggi */
     }
 
     .option-card:hover { 
       border-color: var(--accent-blue); 
       background: #f8fbff;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     .option-card.selected { 
       border-color: var(--primary-blue); 
       background: #eff6ff; 
-      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
+      box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.2);
     }
 
     .nav-buttons { 
       display: flex; 
       gap: 15px; 
-      margin-top: 40px; 
+      margin-top: 45px; 
       width: 100%;
       justify-content: center;
     }
@@ -242,47 +270,53 @@
       height: 14px;
       background: #f1f5f9;
       border-radius: 12px;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
       overflow: hidden;
       border: 1px solid #e2e8f0;
       width: 100%;
     }
-    .progress-fill { height: 100%; background: var(--primary-blue); transition: width 0.5s; }
+    .progress-fill { height: 100%; background: var(--primary-blue); transition: width 0.6s ease-in-out; }
 
     .hidden { display: none !important; }
     
     .loading-overlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(2, 6, 23, 0.95);
+      background: rgba(2, 6, 23, 0.97);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       z-index: 9999;
       color: white;
       text-align: center;
+      backdrop-filter: blur(10px);
     }
 
     .leaderboard-table {
       width: 100%; border-collapse: collapse;
+      margin-top: 10px;
     }
-    .leaderboard-table th { padding: 12px; text-align: left; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; border-bottom: 2px solid #f1f5f9; }
-    .leaderboard-table td { padding: 16px 12px; border-bottom: 1px solid #f1f5f9; text-align: left; }
+    .leaderboard-table th { padding: 15px; text-align: center; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; border-bottom: 2px solid #f1f5f9; }
+    .leaderboard-table td { padding: 20px 15px; border-bottom: 1px solid #f1f5f9; text-align: center; font-weight: 600; }
     
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
     @media (max-width: 480px) {
-      .card { padding: 30px 20px; }
+      .card { padding: 35px 20px; }
       .app-title { font-size: 2.2rem; }
-      .arabic-text { font-size: 1.7rem; }
-      .roman-text { font-size: 1.15rem; }
-      .app-logo { width: 110px; height: 110px; }
+      .arabic-text { font-size: 1.8rem; }
+      .roman-text { font-size: 1.25rem; }
+      .app-logo { width: 120px; height: 120px; }
     }
   </style>
 </head>
 <body>
 
 <div class="container">
+  <!-- Loading State -->
   <div id="loading" class="loading-overlay hidden">
-    <div style="border: 5px solid rgba(255,255,255,0.1); border-top: 5px solid white; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite;"></div>
-    <p id="loading-text" style="margin-top: 20px; font-weight: 700; font-family: 'Cairo'; letter-spacing: 2px;">SILA TUNGGU...</p>
+    <div style="border: 6px solid rgba(255,255,255,0.1); border-top: 6px solid white; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite;"></div>
+    <p id="loading-text" style="margin-top: 25px; font-weight: 800; font-family: 'Cairo'; letter-spacing: 2px; font-size: 1.1rem;">MENGHUBUNGKAN PELAYAN...</p>
   </div>
 
+  <!-- Screen 1: Login -->
   <div id="screen-login" class="card">
     <div class="logo-container">
       <img src="https://img2link.kiemiftah.com/uploads/kuizapplogo.png" alt="Logo Kuiz" class="app-logo" onerror="this.src='https://placehold.co/512x512/0f172a/ffffff?text=NAHU';">
@@ -292,19 +326,20 @@
       <div class="instruction-ar">أجب عن جميع الأسئلة. يُسمح بثلاث محاولات كحد أقصى. الترتيب يعتمد على متوسط درجاتك.</div>
       <div class="instruction-ms">Sila jawab semua soalan. Maksimum tiga cubaan sahaja. Ranking dikira mengikut purata markah keseluruhan.</div>
     </div>
-    <div style="margin-bottom: 30px; display: flex; flex-direction: column; align-items: center;">
+    <div class="login-form">
       <label>SILA MASUKKAN NOMBOR MATRIK PELAJAR</label>
       <input type="text" id="matric-input" placeholder="A12345" autocomplete="off" oninput="this.value = this.value.toUpperCase()">
+      <button class="btn btn-primary" onclick="handleLogin()">MULAKAN KUIZ SEKARANG</button>
     </div>
-    <button class="btn btn-primary" onclick="handleLogin()">MULAKAN KUIZ SEKARANG</button>
-    <div id="login-error" style="color: var(--error); margin-top: 20px; font-size: 0.85rem; text-align: center; font-weight: 700;" class="hidden"></div>
+    <div id="login-error" style="color: var(--error); margin-top: 25px; font-size: 0.9rem; text-align: center; font-weight: 800;" class="hidden"></div>
   </div>
 
+  <!-- Screen 2: Quiz -->
   <div id="screen-quiz" class="hidden">
     <div class="card">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; width: 100%;">
-        <span id="quiz-progress-text" style="font-weight: 800; font-size: 0.9rem; color: var(--navy-deep);">SOALAN 1 / 100</span>
-        <span id="quiz-attempt-info" style="font-size: 0.7rem; font-weight: 800; background: #eff6ff; color: #1e40af; padding: 6px 14px; border-radius: 12px;">CUBAAN 1/3</span>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; width: 100%;">
+        <span id="quiz-progress-text" style="font-weight: 800; font-size: 0.95rem; color: var(--navy-deep);">SOALAN 1 / 100</span>
+        <span id="quiz-attempt-info" style="font-size: 0.75rem; font-weight: 900; background: #eff6ff; color: #1e40af; padding: 8px 16px; border-radius: 12px; border: 1px solid #dbeafe;">CUBAAN 1/3</span>
       </div>
       <div class="progress-bar"><div id="progress-fill" class="progress-fill" style="width: 1%"></div></div>
       
@@ -312,41 +347,41 @@
         <div class="question-box">
           <div class="roman-text" id="q-text">Memuatkan...</div>
         </div>
-        <!-- Arahan: Grid ini akan tukar 1 col atau 2 col secara automatik -->
         <div id="options-container"></div>
       </div>
 
       <div class="nav-buttons">
-        <button class="btn" style="background: #f1f5f9; color: #334155; border: 1px solid #e2e8f0;" id="btn-prev" onclick="prevQuestion()" disabled>KEMBALI</button>
+        <button class="btn" style="background: #f1f5f9; color: #334155; border: 1px solid #e2e8f0; font-weight: 700;" id="btn-prev" onclick="prevQuestion()" disabled>KEMBALI</button>
         <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">SETERUSNYA</button>
       </div>
-      <button class="btn hidden" id="btn-submit" style="background: var(--success); color: white; margin-top: 15px; max-width: 100%;" onclick="confirmSubmit()">HANTAR JAWAPAN</button>
+      <button class="btn hidden" id="btn-submit" style="background: var(--success); color: white; margin-top: 20px; max-width: 100%; box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);" onclick="confirmSubmit()">HANTAR JAWAPAN SEKARANG</button>
     </div>
   </div>
 
+  <!-- Screen 3: Result -->
   <div id="screen-result" class="hidden">
     <div class="card" style="text-align: center;">
-      <h1 style="font-family: 'Cairo'; font-size: 2.2rem; color: var(--navy-dark);" id="result-status">Keputusan</h1>
-      <div style="font-size: 4.5rem; font-weight: 900; margin: 15px 0; color: var(--navy-darkest);" id="result-score">0/100</div>
+      <h1 style="font-family: 'Cairo'; font-size: 2.5rem; color: var(--navy-dark); font-weight: 900;" id="result-status">Keputusan</h1>
+      <div style="font-size: 5.5rem; font-weight: 900; margin: 15px 0; color: var(--navy-darkest); line-height: 1;" id="result-score">0/100</div>
       
-      <div style="display: flex; justify-content: space-around; background: #f8fafc; padding: 24px; border-radius: 24px; margin-bottom: 30px; border: 1px solid #e2e8f0;">
-          <div><div style="font-weight: 900; font-size: 1.5rem;" id="res-correct">0</div><div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted);">BETUL</div></div>
-          <div><div style="font-weight: 900; font-size: 1.5rem; color: var(--error);" id="res-wrong">0</div><div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted);">SALAH</div></div>
-          <div><div style="font-weight: 900; font-size: 1.5rem; color: var(--success);" id="res-pct">0%</div><div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted);">SKOR</div></div>
+      <div style="display: flex; justify-content: space-around; background: #f8fafc; padding: 30px; border-radius: 28px; margin: 30px 0; border: 1px solid #e2e8f0;">
+          <div><div style="font-weight: 900; font-size: 1.8rem;" id="res-correct">0</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">BETUL</div></div>
+          <div><div style="font-weight: 900; font-size: 1.8rem; color: var(--error);" id="res-wrong">0</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">SALAH</div></div>
+          <div><div style="font-weight: 900; font-size: 1.8rem; color: var(--success);" id="res-pct">0%</div><div style="font-size: 0.75rem; font-weight: 800; color: var(--text-muted);">SKOR</div></div>
       </div>
 
       <button class="btn btn-primary" id="btn-retake" onclick="handleRetake()">CUBA LAGI (RETAKE)</button>
-      <p id="retake-info" style="font-size: 0.85rem; margin-top: 15px; font-weight: 700; color: var(--text-muted);"></p>
+      <p id="retake-info" style="font-size: 0.9rem; margin-top: 20px; font-weight: 800; color: var(--text-muted);"></p>
     </div>
 
     <div class="card">
-      <h2 style="font-family: 'Cairo'; font-size: 1.5rem; margin-top: 0; color: var(--navy-darkest); text-align: center; margin-bottom: 15px;">Kedudukan Top 5</h2>
+      <h2 style="font-family: 'Cairo'; font-size: 1.6rem; margin-top: 0; color: var(--navy-darkest); text-align: center; margin-bottom: 20px; font-weight: 800;">Kedudukan Top 5</h2>
       <table class="leaderboard-table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>Matrik</th>
-            <th>Skor</th>
+            <th>KED</th>
+            <th>MATRIK</th>
+            <th>SKOR</th>
             <th>%</th>
           </tr>
         </thead>
@@ -363,7 +398,7 @@
     const matric = document.getElementById('matric-input').value.trim();
     if(!matric) return;
     toggleLoading(true, "Mengesahkan Nombor Matrik...");
-    if (typeof google !== 'undefined') {
+    if (typeof google !== 'undefined' && google.script && google.script.run) {
       google.script.run.withSuccessHandler(res => {
         if(res.success) { state.student = res.student; state.attempt_no = res.attempt_no; startQuiz(); }
         else { toggleLoading(false); const errDiv = document.getElementById('login-error'); errDiv.innerText = res.message; errDiv.classList.remove('hidden'); }
@@ -408,7 +443,7 @@
 
   function nextQuestion() { if(state.currentIdx < state.questions.length - 1) { state.currentIdx++; renderQuestion(); } }
   function prevQuestion() { if(state.currentIdx > 0) { state.currentIdx--; renderQuestion(); } }
-  function confirmSubmit() { if(confirm(`Pastikan semua jawapan telah disemak. Hantar sekarang?`)) submitQuiz(); }
+  function confirmSubmit() { if(confirm(`Adakah anda pasti mahu menghantar semua jawapan sekarang?`)) submitQuiz(); }
   
   function submitQuiz() {
     toggleLoading(true, "Menghantar Jawapan...");
@@ -432,7 +467,7 @@
 
   function fetchLeaderboard() {
     google.script.run.withSuccessHandler(lb => {
-      document.getElementById('leaderboard-body').innerHTML = lb.map(row => `<tr><td>${row[0]}</td><td style="font-weight:700; color:var(--navy-deep);">${row[1]}</td><td>${row[2]}</td><td style="font-weight:700; color:var(--success);">${(row[3] || 0).toFixed(0)}%</td></tr>`).join('');
+      document.getElementById('leaderboard-body').innerHTML = lb.map(row => `<tr><td>${row[0]}</td><td style="font-weight:800; color:var(--navy-deep);">${row[1]}</td><td>${row[2]}</td><td style="font-weight:800; color:var(--success);">${(row[3] || 0).toFixed(0)}%</td></tr>`).join('');
     }).getLeaderboard();
   }
 
