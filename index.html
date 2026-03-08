@@ -313,7 +313,7 @@
   <!-- Loading State -->
   <div id="loading" class="loading-overlay hidden">
     <div style="border: 6px solid rgba(255,255,255,0.1); border-top: 6px solid white; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite;"></div>
-    <p id="loading-text" style="margin-top: 25px; font-weight: 800; font-family: 'Cairo'; letter-spacing: 2px; font-size: 1.1rem;">MENGHUBUNGKAN PELAYAN...</p>
+    <p id="loading-text" style="margin-top: 25px; font-weight: 800; font-family: 'Cairo'; letter-spacing: 2px; font-size: 1.1rem;">SILA TUNGGU...</p>
   </div>
 
   <!-- Screen 1: Login -->
@@ -397,21 +397,51 @@
   function handleLogin() {
     const matric = document.getElementById('matric-input').value.trim();
     if(!matric) return;
+    
+    document.getElementById('login-error').classList.add('hidden');
     toggleLoading(true, "Mengesahkan Nombor Matrik...");
+    
     if (typeof google !== 'undefined' && google.script && google.script.run) {
-      google.script.run.withSuccessHandler(res => {
-        if(res.success) { state.student = res.student; state.attempt_no = res.attempt_no; startQuiz(); }
-        else { toggleLoading(false); const errDiv = document.getElementById('login-error'); errDiv.innerText = res.message; errDiv.classList.remove('hidden'); }
-      }).validateStudent(matric);
+      google.script.run
+        .withSuccessHandler(res => {
+          if(res.success) {
+            state.student = res.student;
+            state.attempt_no = res.attempt_no;
+            startQuiz();
+          } else {
+            toggleLoading(false);
+            const errDiv = document.getElementById('login-error');
+            errDiv.innerText = res.message;
+            errDiv.classList.remove('hidden');
+          }
+        })
+        .withFailureHandler(err => {
+          toggleLoading(false);
+          const errDiv = document.getElementById('login-error');
+          errDiv.innerText = "Ralat Rangkaian: Sila semak sambungan internet anda atau cuba lagi sebentar.";
+          errDiv.classList.remove('hidden');
+        })
+        .validateStudent(matric);
     }
   }
 
   function startQuiz() {
     toggleLoading(true, "Menyusun 100 Soalan...");
-    google.script.run.withSuccessHandler(questions => {
-      state.questions = questions; state.currentIdx = 0; state.answers = {}; state.started_at = new Date().toISOString();
-      renderQuestion(); showScreen('screen-quiz'); toggleLoading(false);
-    }).getQuizData(state.student.matric_no);
+    google.script.run
+      .withSuccessHandler(questions => {
+        state.questions = questions; 
+        state.currentIdx = 0; 
+        state.answers = {}; 
+        state.started_at = new Date().toISOString();
+        renderQuestion(); 
+        showScreen('screen-quiz'); 
+        toggleLoading(false);
+      })
+      .withFailureHandler(err => {
+        toggleLoading(false);
+        alert("Gagal memuatkan soalan. Sila muat semula halaman.");
+      })
+      .getQuizData(state.student.matric_no);
   }
 
   function renderQuestion() {
@@ -447,8 +477,22 @@
   
   function submitQuiz() {
     toggleLoading(true, "Menghantar Jawapan...");
-    google.script.run.withSuccessHandler(res => { localStorage.removeItem('quiz_progress_' + state.student.matric_no); showResult(res); })
-    .submitAttempt({ matric_no: state.student.matric_no, attempt_no: state.attempt_no, answers: state.answers, question_order: state.questions.map(q => q.id), started_at: state.started_at });
+    google.script.run
+      .withSuccessHandler(res => { 
+        localStorage.removeItem('quiz_progress_' + state.student.matric_no); 
+        showResult(res); 
+      })
+      .withFailureHandler(err => {
+        toggleLoading(false);
+        alert("Gagal menghantar jawapan. Sila cuba lagi.");
+      })
+      .submitAttempt({ 
+        matric_no: state.student.matric_no, 
+        attempt_no: state.attempt_no, 
+        answers: state.answers, 
+        question_order: state.questions.map(q => q.id), 
+        started_at: state.started_at 
+      });
   }
 
   function showResult(res) {
@@ -462,7 +506,8 @@
     if(res.percentage === 100) { document.getElementById('result-status').innerText = "Cemerlang!"; retakeBtn.classList.add('hidden'); }
     else if (res.remaining > 0) { document.getElementById('result-status').innerText = "Cuba Lagi!"; retakeBtn.classList.remove('hidden'); retakeInfo.innerText = `Baki cubaan: ${res.remaining}`; }
     else { document.getElementById('result-status').innerText = "Selesai"; retakeBtn.classList.add('hidden'); retakeInfo.innerText = "Had cubaan tamat."; }
-    fetchLeaderboard(); toggleLoading(false);
+    fetchLeaderboard(); 
+    toggleLoading(false);
   }
 
   function fetchLeaderboard() {
@@ -473,7 +518,16 @@
 
   function handleRetake() { handleLogin(); }
   function showScreen(id) { ['screen-login', 'screen-quiz', 'screen-result'].forEach(s => { const el = document.getElementById(s); if (el) el.classList.add('hidden'); }); const target = document.getElementById(id); if (target) target.classList.remove('hidden'); window.scrollTo(0,0); }
-  function toggleLoading(show, text = "") { const l = document.getElementById('loading'); const lt = document.getElementById('loading-text'); if (l) { if (lt && text) lt.innerText = text.toString().toUpperCase(); l.classList.toggle('hidden', !show); } }
+  
+  function toggleLoading(show, text = "") { 
+    const l = document.getElementById('loading'); 
+    const lt = document.getElementById('loading-text'); 
+    if (l) { 
+      if (lt && text) lt.innerText = text.toString().toUpperCase(); 
+      l.classList.toggle('hidden', !show); 
+    } 
+  }
+  
   function saveProgress() { if(state.student) localStorage.setItem('quiz_progress_' + state.student.matric_no, JSON.stringify({ attempt_no: state.attempt_no, answers: state.answers, currentIdx: state.currentIdx })); }
 </script>
 </body>
