@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>اختبار القواعد العربية</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700&family=Amiri+Quran&family=Arimo:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
   <style>
     :root {
+      /* Deep Navy & Dark Blue Palette */
       --navy-darkest: #020617;
       --navy-dark: #0f172a;
       --navy-deep: #1e3a8a;
@@ -15,7 +17,6 @@
       --accent-blue: #3b82f6;
       --navy-gradient: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e3a8a 100%);
       --card-bg: #ffffff;
-      --text-main: #1e293b;
       --text-muted: #64748b;
       --success: #10b981;
       --error: #ef4444;
@@ -29,13 +30,12 @@
       display: flex;
       justify-content: center;
       min-height: 100vh;
-      color: var(--text-main);
       padding: 0;
     }
 
     .container {
       width: 100%;
-      max-width: 600px;
+      max-width: 850px; /* Lebarkan sedikit untuk skrin besar */
       padding: 20px;
       box-sizing: border-box;
       display: flex;
@@ -46,12 +46,12 @@
     .card {
       background: var(--card-bg);
       border-radius: 32px;
-      padding: 35px;
+      padding: 40px;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
       margin-bottom: 24px;
       width: 100%;
       box-sizing: border-box;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center; /* Pastikan semua dalam kad centered */
     }
 
     .logo-container {
@@ -61,8 +61,8 @@
     }
     
     .app-logo {
-      width: 130px;
-      height: 130px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%; 
       object-fit: cover;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
@@ -72,11 +72,10 @@
 
     .app-title {
       font-family: 'Cairo', sans-serif;
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       font-weight: 900;
       text-align: center;
       margin-bottom: 20px;
-      line-height: 1.1;
       background: linear-gradient(to bottom, #1e3a8a, #020617);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -86,44 +85,84 @@
       text-align: center;
       margin-bottom: 30px;
       background: #f8fafc;
-      padding: 18px;
+      padding: 20px;
       border-radius: 20px;
       border: 1px solid #e2e8f0;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .instruction-ar {
       font-family: 'Tajawal', sans-serif;
-      font-size: 0.95rem;
+      font-size: 1rem;
       direction: rtl;
-      line-height: 1.5;
+      line-height: 1.6;
       color: var(--navy-medium);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      text-align: center;
     }
 
     .instruction-ms {
-      font-size: 0.75rem;
-      line-height: 1.4;
+      font-size: 0.8rem;
+      line-height: 1.5;
       color: var(--text-muted);
-      max-width: 90%;
-      margin: 0 auto;
       font-weight: 600;
       text-transform: uppercase;
+      text-align: center;
     }
 
+    /* Kotak Soalan Besar */
+    .question-box {
+      background: #fdfdfd;
+      border-top: 4px solid var(--primary-blue);
+      padding: 35px 25px;
+      border-radius: 24px;
+      margin-bottom: 35px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+      text-align: center;
+    }
+
+    .roman-text {
+      font-family: 'Arimo', sans-serif;
+      direction: ltr;
+      text-align: center;
+      font-size: 1.4rem; /* Besarkan font soalan */
+      font-weight: 700;
+      color: var(--navy-darkest);
+    }
+
+    /* Arabic Text centered with large line-height */
     .arabic-text {
       font-family: 'Amiri Quran', serif;
-      font-size: 1.9rem;
+      font-size: 2.1rem; 
       direction: rtl;
-      line-height: 2.7; 
-      text-align: right;
+      line-height: 2.8; 
+      text-align: center;
       color: var(--navy-darkest);
+      width: 100%;
+    }
+
+    /* Grid Jawapan */
+    #options-container {
+      display: grid;
+      grid-template-columns: 1fr; /* Default mobile (1 column) */
+      gap: 15px;
+      width: 100%;
+    }
+
+    /* Responsif untuk skrin besar / landscape */
+    @media (min-width: 600px) {
+      #options-container {
+        grid-template-columns: 1fr 1fr; /* 2 columns */
+      }
     }
 
     label { 
       display: block; 
-      margin-bottom: 12px; 
+      margin-bottom: 15px; 
       font-weight: 700; 
-      font-size: 0.8rem; 
+      font-size: 0.9rem; 
       color: var(--navy-light);
       text-align: center;
       letter-spacing: 1px;
@@ -131,90 +170,84 @@
     
     input[type="text"] {
       width: 100%;
-      padding: 16px;
+      max-width: 400px;
+      padding: 18px;
       border: 2px solid #e2e8f0;
-      border-radius: 16px;
-      font-size: 1.2rem;
+      border-radius: 20px;
+      font-size: 1.3rem;
       text-align: center;
-      transition: all 0.3s ease;
-      background: #f8fafc;
-      color: var(--navy-darkest);
+      text-transform: uppercase;
+      margin-bottom: 10px;
       box-sizing: border-box;
-    }
-
-    input[type="text"]:focus {
-      outline: none;
-      border-color: var(--navy-deep);
-      box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.1);
     }
 
     .btn {
       width: 100%;
-      padding: 18px;
+      max-width: 400px;
+      padding: 20px;
       border: none;
-      border-radius: 16px;
+      border-radius: 20px;
       font-weight: 800;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.1rem;
       transition: all 0.2s;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    .btn:active { transform: scale(0.97); }
 
     .btn-primary { 
       background: var(--navy-gradient);
       color: white; 
-      box-shadow: 0 10px 15px -3px rgba(2, 6, 23, 0.4);
-    }
-    
-    .btn-primary:hover {
-      opacity: 0.95;
-      box-shadow: 0 15px 20px -5px rgba(2, 6, 23, 0.5);
     }
 
     .option-card {
       border: 2px solid #f1f5f9;
-      border-radius: 18px;
-      padding: 18px 25px;
-      margin-bottom: 12px;
+      border-radius: 24px;
+      padding: 25px 15px;
       cursor: pointer;
       display: flex;
-      direction: rtl;
+      justify-content: center;
+      align-items: center;
       background: #fff;
-      transition: all 0.2s;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      min-height: 100px; /* Seragamkan saiz kotak jawapan */
     }
 
     .option-card:hover { 
       border-color: var(--accent-blue); 
-      background: #f0f7ff; 
-      transform: translateX(-5px);
+      background: #f8fbff;
+      transform: translateY(-2px);
     }
 
     .option-card.selected { 
       border-color: var(--primary-blue); 
       background: #eff6ff; 
-      box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1);
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.1);
     }
 
-    .nav-buttons { display: flex; gap: 12px; margin-top: 30px; }
-    .nav-buttons button { flex: 1; }
-
-    .btn-nav-prev {
-      background: #f1f5f9;
-      color: var(--navy-light);
+    .nav-buttons { 
+      display: flex; 
+      gap: 15px; 
+      margin-top: 40px; 
+      width: 100%;
+      justify-content: center;
+    }
+    .nav-buttons button { 
+      flex: 1; 
+      max-width: 250px;
     }
 
     .progress-bar {
-      height: 10px;
+      height: 14px;
       background: #f1f5f9;
-      border-radius: 10px;
-      margin-bottom: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
       overflow: hidden;
+      border: 1px solid #e2e8f0;
+      width: 100%;
     }
-    .progress-fill { height: 100%; background: var(--primary-blue); transition: width 0.5s ease-out; }
+    .progress-fill { height: 100%; background: var(--primary-blue); transition: width 0.5s; }
 
     .hidden { display: none !important; }
     
@@ -223,22 +256,21 @@
       background: rgba(2, 6, 23, 0.95);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       z-index: 9999;
-      backdrop-filter: blur(10px);
       color: white;
+      text-align: center;
     }
 
     .leaderboard-table {
-      width: 100%; border-collapse: collapse; margin-top: 20px;
+      width: 100%; border-collapse: collapse;
     }
-    .leaderboard-table th { padding: 12px; text-align: left; font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; border-bottom: 2px solid #f1f5f9; }
-    .leaderboard-table td { padding: 16px 12px; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; }
+    .leaderboard-table th { padding: 12px; text-align: left; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; border-bottom: 2px solid #f1f5f9; }
+    .leaderboard-table td { padding: 16px 12px; border-bottom: 1px solid #f1f5f9; text-align: left; }
     
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
     @media (max-width: 480px) {
-      .card { padding: 30px 20px; border-radius: 28px; }
-      .app-title { font-size: 2.1rem; }
-      .arabic-text { font-size: 1.6rem; line-height: 2.5; }
+      .card { padding: 30px 20px; }
+      .app-title { font-size: 2.2rem; }
+      .arabic-text { font-size: 1.7rem; }
+      .roman-text { font-size: 1.15rem; }
       .app-logo { width: 110px; height: 110px; }
     }
   </style>
@@ -248,72 +280,67 @@
 <div class="container">
   <div id="loading" class="loading-overlay hidden">
     <div style="border: 5px solid rgba(255,255,255,0.1); border-top: 5px solid white; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite;"></div>
-    <p id="loading-text" style="margin-top: 20px; font-weight: 700; font-family: 'Cairo'; letter-spacing: 2px;">MENGHUBUNGKAN PELAYAN...</p>
+    <p id="loading-text" style="margin-top: 20px; font-weight: 700; font-family: 'Cairo'; letter-spacing: 2px;">SILA TUNGGU...</p>
   </div>
 
   <div id="screen-login" class="card">
     <div class="logo-container">
-      <img src="https://img2link.kiemiftah.com/uploads/kuizapplogo.png" alt="Logo Kuiz" class="app-logo" onerror="this.src='https://placehold.co/512x512/0f172a/ffffff?text=AR';">
+      <img src="https://img2link.kiemiftah.com/uploads/kuizapplogo.png" alt="Logo Kuiz" class="app-logo" onerror="this.src='https://placehold.co/512x512/0f172a/ffffff?text=NAHU';">
     </div>
-    
     <div class="app-title">اختبار القواعد العربية</div>
-    
     <div class="instruction-box">
-      <div class="instruction-ar">
-        أجب عن جميع الأسئلة. يُسمح بثلاث محاولات كحد أقصى. الترتيب يعتمد على متوسط درجاتك.
-      </div>
-      <div class="instruction-ms">
-        Sila jawab semua soalan. Maksimum tiga cubaan sahaja. Ranking dikira mengikut purata markah keseluruhan.
-      </div>
+      <div class="instruction-ar">أجب عن جميع الأسئلة. يُسمح بثلاث محاولات كحد أقصى. الترتيب يعتمد على متوسط درجاتك.</div>
+      <div class="instruction-ms">Sila jawab semua soalan. Maksimum tiga cubaan sahaja. Ranking dikira mengikut purata markah keseluruhan.</div>
     </div>
-
-    <div style="margin-bottom: 30px;">
+    <div style="margin-bottom: 30px; display: flex; flex-direction: column; align-items: center;">
       <label>SILA MASUKKAN NOMBOR MATRIK PELAJAR</label>
-      <input type="text" id="matric-input" placeholder="A12345" autocomplete="off">
+      <input type="text" id="matric-input" placeholder="A12345" autocomplete="off" oninput="this.value = this.value.toUpperCase()">
     </div>
-    
     <button class="btn btn-primary" onclick="handleLogin()">MULAKAN KUIZ SEKARANG</button>
     <div id="login-error" style="color: var(--error); margin-top: 20px; font-size: 0.85rem; text-align: center; font-weight: 700;" class="hidden"></div>
   </div>
 
   <div id="screen-quiz" class="hidden">
     <div class="card">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-        <span id="quiz-progress-text" style="font-weight: 800; font-size: 0.85rem; color: var(--navy-deep);">SOALAN 1 / 100</span>
-        <span id="quiz-attempt-info" style="font-size: 0.65rem; font-weight: 800; background: #eff6ff; color: #1e40af; padding: 6px 14px; border-radius: 12px; border: 1px solid #dbeafe;">CUBAAN 1/3</span>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; width: 100%;">
+        <span id="quiz-progress-text" style="font-weight: 800; font-size: 0.9rem; color: var(--navy-deep);">SOALAN 1 / 100</span>
+        <span id="quiz-attempt-info" style="font-size: 0.7rem; font-weight: 800; background: #eff6ff; color: #1e40af; padding: 6px 14px; border-radius: 12px;">CUBAAN 1/3</span>
       </div>
       <div class="progress-bar"><div id="progress-fill" class="progress-fill" style="width: 1%"></div></div>
       
       <div id="question-container">
-        <div class="arabic-text" id="q-text" style="margin-bottom: 25px; border-bottom: 1px dashed #e2e8f0; padding-bottom: 15px;">Sila tunggu...</div>
+        <div class="question-box">
+          <div class="roman-text" id="q-text">Memuatkan...</div>
+        </div>
+        <!-- Arahan: Grid ini akan tukar 1 col atau 2 col secara automatik -->
         <div id="options-container"></div>
       </div>
 
       <div class="nav-buttons">
-        <button class="btn btn-nav-prev" id="btn-prev" onclick="prevQuestion()" disabled>KEMBALI</button>
+        <button class="btn" style="background: #f1f5f9; color: #334155; border: 1px solid #e2e8f0;" id="btn-prev" onclick="prevQuestion()" disabled>KEMBALI</button>
         <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">SETERUSNYA</button>
       </div>
-      <button class="btn hidden" id="btn-submit" style="background: var(--success); color: white; margin-top: 15px; box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);" onclick="confirmSubmit()">HANTAR JAWAPAN</button>
+      <button class="btn hidden" id="btn-submit" style="background: var(--success); color: white; margin-top: 15px; max-width: 100%;" onclick="confirmSubmit()">HANTAR JAWAPAN</button>
     </div>
   </div>
 
   <div id="screen-result" class="hidden">
     <div class="card" style="text-align: center;">
-      <h1 style="font-family: 'Cairo'; font-size: 2.2rem; margin-bottom: 5px; color: var(--navy-dark);" id="result-status">Keputusan</h1>
-      <div style="font-size: 4.5rem; font-weight: 900; margin: 10px 0; color: var(--navy-darkest);" id="result-score">0/100</div>
+      <h1 style="font-family: 'Cairo'; font-size: 2.2rem; color: var(--navy-dark);" id="result-status">Keputusan</h1>
+      <div style="font-size: 4.5rem; font-weight: 900; margin: 15px 0; color: var(--navy-darkest);" id="result-score">0/100</div>
       
       <div style="display: flex; justify-content: space-around; background: #f8fafc; padding: 24px; border-radius: 24px; margin-bottom: 30px; border: 1px solid #e2e8f0;">
-          <div><div style="font-weight: 900; font-size: 1.3rem;" id="res-correct">0</div><div style="font-size: 0.65rem; color: var(--text-muted); font-weight: 800;">BETUL</div></div>
-          <div><div style="font-weight: 900; font-size: 1.3rem; color: var(--error);" id="res-wrong">0</div><div style="font-size: 0.65rem; color: var(--text-muted); font-weight: 800;">SALAH</div></div>
-          <div><div style="font-weight: 900; font-size: 1.3rem; color: var(--success);" id="res-pct">0%</div><div style="font-size: 0.65rem; color: var(--text-muted); font-weight: 800;">SKOR</div></div>
+          <div><div style="font-weight: 900; font-size: 1.5rem;" id="res-correct">0</div><div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted);">BETUL</div></div>
+          <div><div style="font-weight: 900; font-size: 1.5rem; color: var(--error);" id="res-wrong">0</div><div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted);">SALAH</div></div>
+          <div><div style="font-weight: 900; font-size: 1.5rem; color: var(--success);" id="res-pct">0%</div><div style="font-size: 0.7rem; font-weight: 700; color: var(--text-muted);">SKOR</div></div>
       </div>
 
-      <button class="btn btn-primary hidden" id="btn-retake" onclick="handleRetake()">CUBA LAGI</button>
-      <p id="retake-info" style="font-size: 0.8rem; margin-top: 15px; font-weight: 700; color: var(--text-muted);"></p>
+      <button class="btn btn-primary" id="btn-retake" onclick="handleRetake()">CUBA LAGI (RETAKE)</button>
+      <p id="retake-info" style="font-size: 0.85rem; margin-top: 15px; font-weight: 700; color: var(--text-muted);"></p>
     </div>
 
     <div class="card">
-      <h2 style="font-family: 'Cairo'; font-size: 1.4rem; margin-top: 0; color: var(--navy-darkest); text-align: center; margin-bottom: 15px;">Kedudukan Top 5</h2>
+      <h2 style="font-family: 'Cairo'; font-size: 1.5rem; margin-top: 0; color: var(--navy-darkest); text-align: center; margin-bottom: 15px;">Kedudukan Top 5</h2>
       <table class="leaderboard-table">
         <thead>
           <tr>
@@ -336,79 +363,42 @@
     const matric = document.getElementById('matric-input').value.trim();
     if(!matric) return;
     toggleLoading(true, "Mengesahkan Nombor Matrik...");
-    
-    // Gunakan fungsi sebenar Google Apps Script
-    if (typeof google !== 'undefined' && google.script && google.script.run) {
-      google.script.run
-        .withSuccessHandler(res => {
-          if(res.success) {
-            state.student = res.student;
-            state.attempt_no = res.attempt_no;
-            startQuiz();
-          } else {
-            toggleLoading(false);
-            const errDiv = document.getElementById('login-error');
-            if (errDiv) {
-              errDiv.innerText = res.message;
-              errDiv.classList.remove('hidden');
-            }
-          }
-        })
-        .validateStudent(matric);
-    } else {
-      // Logic fallback hanya untuk simulasi jika dijalankan luar environment Apps Script
-      setTimeout(() => {
-        state.student = { matric_no: matric, name: 'Student' };
-        state.attempt_no = 1;
-        startQuiz();
-      }, 1000);
+    if (typeof google !== 'undefined') {
+      google.script.run.withSuccessHandler(res => {
+        if(res.success) { state.student = res.student; state.attempt_no = res.attempt_no; startQuiz(); }
+        else { toggleLoading(false); const errDiv = document.getElementById('login-error'); errDiv.innerText = res.message; errDiv.classList.remove('hidden'); }
+      }).validateStudent(matric);
     }
   }
 
   function startQuiz() {
-    toggleLoading(true, "Menyusun Soalan...");
-    if (typeof google !== 'undefined' && google.script && google.script.run) {
-      google.script.run
-        .withSuccessHandler(questions => {
-          state.questions = questions;
-          state.currentIdx = 0;
-          state.answers = {};
-          state.started_at = new Date().toISOString();
-          renderQuestion();
-          showScreen('screen-quiz');
-          toggleLoading(false);
-        })
-        .getQuizData(state.student.matric_no);
-    } else {
-      // Mock data soalan untuk simulasi sahaja
-      state.questions = [
-        { id: 1, question: "Pilih ayat yang betul.", options: [{ text: "تِلْكَ كِتَابَةٌ جَدِيدَةٌ.", id: 1 }, { text: "تِلْكَ كِتَابٌ جَدِيدَةٌ.", id: 2 }, { text: "ذَلِكَ كِتَابَةٌ جَدِيدٌ.", id: 3 }] }
-      ];
-      state.currentIdx = 0;
-      state.answers = {};
-      state.started_at = new Date().toISOString();
-      renderQuestion();
-      showScreen('screen-quiz');
-      toggleLoading(false);
-    }
+    toggleLoading(true, "Menyusun 100 Soalan...");
+    google.script.run.withSuccessHandler(questions => {
+      state.questions = questions; state.currentIdx = 0; state.answers = {}; state.started_at = new Date().toISOString();
+      renderQuestion(); showScreen('screen-quiz'); toggleLoading(false);
+    }).getQuizData(state.student.matric_no);
   }
 
   function renderQuestion() {
     if (!state.questions || !state.questions.length) return;
     const q = state.questions[state.currentIdx];
+    
     document.getElementById('q-text').innerText = q.question;
     document.getElementById('quiz-progress-text').innerText = `SOALAN ${state.currentIdx + 1} / ${state.questions.length}`;
     document.getElementById('quiz-attempt-info').innerText = `CUBAAN ${state.attempt_no} / 3`;
     document.getElementById('progress-fill').style.width = ((state.currentIdx + 1) / state.questions.length * 100) + '%';
+    
     const optContainer = document.getElementById('options-container');
     optContainer.innerHTML = '';
+    
     q.options.forEach(opt => {
       const div = document.createElement('div');
       div.className = 'option-card' + (state.answers[q.id] === opt.id ? ' selected' : '');
-      div.innerHTML = `<span class="arabic-text" style="margin-bottom:0; font-size:1.6rem;">${opt.text}</span>`;
+      div.innerHTML = `<span class="arabic-text" style="margin-bottom:0;">${opt.text}</span>`;
       div.onclick = () => { state.answers[q.id] = opt.id; renderQuestion(); };
       optContainer.appendChild(div);
     });
+    
     document.getElementById('btn-prev').disabled = state.currentIdx === 0;
     const isLast = state.currentIdx === state.questions.length - 1;
     document.getElementById('btn-next').classList.toggle('hidden', isLast);
@@ -418,27 +408,12 @@
 
   function nextQuestion() { if(state.currentIdx < state.questions.length - 1) { state.currentIdx++; renderQuestion(); } }
   function prevQuestion() { if(state.currentIdx > 0) { state.currentIdx--; renderQuestion(); } }
-
-  function confirmSubmit() { if(confirm(`Adakah anda pasti mahu hantar semua jawapan sekarang?`)) submitQuiz(); }
-
+  function confirmSubmit() { if(confirm(`Pastikan semua jawapan telah disemak. Hantar sekarang?`)) submitQuiz(); }
+  
   function submitQuiz() {
     toggleLoading(true, "Menghantar Jawapan...");
-    if (typeof google !== 'undefined' && google.script && google.script.run) {
-      google.script.run
-        .withSuccessHandler(res => {
-          localStorage.removeItem('quiz_progress_' + state.student.matric_no);
-          showResult(res);
-        })
-        .submitAttempt({ 
-          matric_no: state.student.matric_no, 
-          attempt_no: state.attempt_no, 
-          answers: state.answers, 
-          question_order: state.questions.map(q => q.id), 
-          started_at: state.started_at 
-        });
-    } else {
-      showResult({ score: 1, totalQuestions: 1, percentage: 100, remaining: 2 });
-    }
+    google.script.run.withSuccessHandler(res => { localStorage.removeItem('quiz_progress_' + state.student.matric_no); showResult(res); })
+    .submitAttempt({ matric_no: state.student.matric_no, attempt_no: state.attempt_no, answers: state.answers, question_order: state.questions.map(q => q.id), started_at: state.started_at });
   }
 
   function showResult(res) {
@@ -449,62 +424,21 @@
     document.getElementById('res-pct').innerText = (res.percentage || 0).toFixed(0) + '%';
     const retakeBtn = document.getElementById('btn-retake');
     const retakeInfo = document.getElementById('retake-info');
-    if(res.percentage === 100) {
-      document.getElementById('result-status').innerText = "Cemerlang!";
-      if (retakeBtn) retakeBtn.classList.add('hidden');
-    } else if (res.remaining > 0) {
-      document.getElementById('result-status').innerText = "Cuba Lagi!";
-      if (retakeBtn) retakeBtn.classList.remove('hidden');
-      if (retakeInfo) retakeInfo.innerText = `Baki cubaan: ${res.remaining}`;
-    } else {
-      document.getElementById('result-status').innerText = "Selesai";
-      if (retakeBtn) retakeBtn.classList.add('hidden');
-      if (retakeInfo) retakeInfo.innerText = "Had cubaan tamat.";
-    }
-    fetchLeaderboard();
-    toggleLoading(false);
+    if(res.percentage === 100) { document.getElementById('result-status').innerText = "Cemerlang!"; retakeBtn.classList.add('hidden'); }
+    else if (res.remaining > 0) { document.getElementById('result-status').innerText = "Cuba Lagi!"; retakeBtn.classList.remove('hidden'); retakeInfo.innerText = `Baki cubaan: ${res.remaining}`; }
+    else { document.getElementById('result-status').innerText = "Selesai"; retakeBtn.classList.add('hidden'); retakeInfo.innerText = "Had cubaan tamat."; }
+    fetchLeaderboard(); toggleLoading(false);
   }
 
   function fetchLeaderboard() {
-    if (typeof google !== 'undefined' && google.script && google.script.run) {
-      google.script.run.withSuccessHandler(lb => {
-        const body = document.getElementById('leaderboard-body');
-        if (body) {
-          body.innerHTML = lb.map(row => `
-            <tr>
-              <td style="font-weight:900; color:var(--primary-blue);">${row[0]}</td>
-              <td style="font-weight:700;">${row[1]}</td>
-              <td>${row[2]}</td>
-              <td style="font-weight:700; color:var(--success);">${(row[3] || 0).toFixed(0)}%</td>
-            </tr>
-          `).join('');
-        }
-      }).getLeaderboard();
-    }
+    google.script.run.withSuccessHandler(lb => {
+      document.getElementById('leaderboard-body').innerHTML = lb.map(row => `<tr><td>${row[0]}</td><td style="font-weight:700; color:var(--navy-deep);">${row[1]}</td><td>${row[2]}</td><td style="font-weight:700; color:var(--success);">${(row[3] || 0).toFixed(0)}%</td></tr>`).join('');
+    }).getLeaderboard();
   }
 
   function handleRetake() { handleLogin(); }
-  function showScreen(id) { 
-    ['screen-login', 'screen-quiz', 'screen-result'].forEach(s => {
-      const el = document.getElementById(s);
-      if (el) el.classList.add('hidden');
-    }); 
-    const target = document.getElementById(id);
-    if (target) target.classList.remove('hidden'); 
-    window.scrollTo(0,0); 
-  }
-  
-  function toggleLoading(show, text = "") { 
-    const l = document.getElementById('loading'); 
-    const lt = document.getElementById('loading-text');
-    if (l) {
-      if (lt && text) {
-        lt.innerText = text.toString().toUpperCase(); 
-      }
-      l.classList.toggle('hidden', !show); 
-    }
-  }
-
+  function showScreen(id) { ['screen-login', 'screen-quiz', 'screen-result'].forEach(s => { const el = document.getElementById(s); if (el) el.classList.add('hidden'); }); const target = document.getElementById(id); if (target) target.classList.remove('hidden'); window.scrollTo(0,0); }
+  function toggleLoading(show, text = "") { const l = document.getElementById('loading'); const lt = document.getElementById('loading-text'); if (l) { if (lt && text) lt.innerText = text.toString().toUpperCase(); l.classList.toggle('hidden', !show); } }
   function saveProgress() { if(state.student) localStorage.setItem('quiz_progress_' + state.student.matric_no, JSON.stringify({ attempt_no: state.attempt_no, answers: state.answers, currentIdx: state.currentIdx })); }
 </script>
 </body>
